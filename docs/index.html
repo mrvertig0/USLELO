@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>USL2 Elo — League Two Power Rankings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">USL League Two &middot; unofficial</p>
+    <h1>Elo<span class="hero-accent">.</span></h1>
+    <div class="hero-lead" id="hero-lead">
+      <div class="hero-num" id="hero-num">&mdash;</div>
+      <div class="hero-team">
+        <div class="hero-team-name" id="hero-team-name">Loading&hellip;</div>
+        <div class="hero-team-sub">current #1 &middot; <span id="hero-team-record"></span></div>
+      </div>
+    </div>
+    <p class="hero-note">Every result across all 158 clubs, folded into one running rating. Recalculated after every matchday.</p>
+  </div>
+</header>
+
+<main>
+  <div class="toolbar">
+    <input id="search" type="text" placeholder="Find a club&hellip;" autocomplete="off">
+    <div class="meta" id="meta-line">&nbsp;</div>
+  </div>
+
+  <table id="board">
+    <thead>
+      <tr>
+        <th class="col-rank">#</th>
+        <th class="col-team">Club</th>
+        <th class="col-form">Form</th>
+        <th class="col-rating">Elo</th>
+        <th class="col-record">GP</th>
+        <th class="col-record">W</th>
+        <th class="col-record">D</th>
+        <th class="col-record">L</th>
+      </tr>
+    </thead>
+    <tbody id="board-body">
+      <tr><td colspan="8" class="loading-row">Loading ratings&hellip;</td></tr>
+    </tbody>
+  </table>
+
+  <p class="explainer">
+    Ratings use the <strong>World Football Elo</strong> method (same approach as
+    eloratings.net): every team starts at 1500, the home side gets a small
+    home-field bump before expected result is calculated, and rating swings
+    scale with margin of victory &mdash; a 3&ndash;0 moves the needle more than a 1&ndash;0.
+    K&#8209;factor and home advantage are tuned for a semi-pro league where
+    rosters shift week to week.
+  </p>
+
+  <footer>
+    <span id="footer-updated">&nbsp;</span>
+    <span class="footer-sep">&middot;</span>
+    <span>data via Sofascore</span>
+  </footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
