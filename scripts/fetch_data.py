@@ -44,10 +44,32 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def get_current_season_id(tournament_id: int) -> tuple[int, str]:
+# Sofascore's main API domain sometimes 403s requests from cloud/CI IP
+# ranges (GitHub Actions runners, etc.) even though the same request works
+# fine from a home connection -- it's an IP/ASN-level block, not a header
+# or fingerprint issue (datafc already spoofs a real browser TLS
+# fingerprint). `datafc` ships a mirror domain for exactly this case;
+# we try the primary source first and fall back automatically.
+DATA_SOURCE_CANDIDATES = ["sofascore", "sofavpn"]
+
+
+def pick_working_data_source(tournament_id: int) -> str:
+    last_err = None
+    for source in DATA_SOURCE_CANDIDATES:
+        try:
+            seasons_data(tournament_id, data_source=source)
+            log.info("using data_source=%r", source)
+            return source
+        except Exception as e:
+            log.warning("data_source=%r failed (%s), trying next", source, e)
+            last_err = e
+    raise RuntimeError(f"All data sources failed. Last error: {last_err}")
+
+
+def get_current_season_id(tournament_id: int, data_source: str) -> tuple[int, str]:
     """Sofascore returns seasons most-recent-first; take the first row,
     but prefer one whose name/year contains the current year if present."""
-    seasons_df = seasons_data(tournament_id)
+    seasons_df = seasons_data(tournament_id, data_source=data_source)
     if seasons_df.empty:
         raise RuntimeError("No seasons returned for USL League Two tournament id.")
 
@@ -61,12 +83,12 @@ def get_current_season_id(tournament_id: int) -> tuple[int, str]:
     return int(row["season_id"]), str(row["season_name"])
 
 
-def fetch_all_rounds(tournament_id: int, season_id: int) -> pd.DataFrame:
+def fetch_all_rounds(tournament_id: int, season_id: int, data_source: str) -> pd.DataFrame:
     frames = []
     consecutive_misses = 0
     for week in range(1, MAX_ROUND_PROBE + 1):
         try:
-            df = match_data(tournament_id, season_id, week_number=week)
+            df = match_data(tournament_id, season_id, week_number=week, data_source=data_source)
             frames.append(df)
             consecutive_misses = 0
             log.info("round %2d: %d matches", week, len(df))
@@ -80,7 +102,7 @@ def fetch_all_rounds(tournament_id: int, season_id: int) -> pd.DataFrame:
             log.warning("round %2d: API error, retrying once (%s)", week, e)
             time.sleep(3)
             try:
-                df = match_data(tournament_id, season_id, week_number=week)
+                df = match_data(tournament_id, season_id, week_number=week, data_source=data_source)
                 frames.append(df)
                 consecutive_misses = 0
             except Exception as e2:
@@ -97,11 +119,14 @@ def fetch_all_rounds(tournament_id: int, season_id: int) -> pd.DataFrame:
 
 
 def main():
+    log.info("Checking which Sofascore endpoint is reachable from this machine...")
+    data_source = pick_working_data_source(TOURNAMENT_ID)
+
     log.info("Looking up current USL League Two season...")
-    season_id, season_name = get_current_season_id(TOURNAMENT_ID)
+    season_id, season_name = get_current_season_id(TOURNAMENT_ID, data_source)
     log.info("Using season_id=%s (%s)", season_id, season_name)
 
-    df = fetch_all_rounds(TOURNAMENT_ID, season_id)
+    df = fetch_all_rounds(TOURNAMENT_ID, season_id, data_source)
     log.info("Fetched %d total matches (all statuses)", len(df))
 
     out_csv = DATA_DIR / "matches.csv"
@@ -112,6 +137,7 @@ def main():
         "tournament_id": TOURNAMENT_ID,
         "season_id": season_id,
         "season_name": season_name,
+        "data_source": data_source,
         "fetched_at_utc": pd.Timestamp.now('UTC').isoformat(),
         "match_count": len(df),
     }
