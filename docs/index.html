@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>USL2 Elo — League Two Power Rankings</title>
+<meta name="description" content="An unofficial, auto-updating Elo power ranking for every club in USL League Two, since the league's post-PDL rebrand.">
+<meta name="theme-color" content="#163a2b">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="USL2 Elo — League Two Power Rankings">
+<meta property="og:description" content="An unofficial, auto-updating Elo power ranking for every club in USL League Two.">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -21,15 +30,32 @@
         <div class="hero-team-sub">current #1 &middot; <span id="hero-team-record"></span></div>
       </div>
     </div>
-    <p class="hero-note">Every result across all 158 clubs, folded into one running rating. Recalculated after every matchday.</p>
+    <p class="hero-note" id="hero-note">Every result since the league's post-PDL rebrand, folded into one running rating. Recalculated after every update.</p>
   </div>
 </header>
 
 <main>
   <div class="toolbar">
     <input id="search" type="text" placeholder="Find a club&hellip;" autocomplete="off">
-    <div class="meta" id="meta-line">&nbsp;</div>
+    <div class="toolbar-right">
+      <div class="seg" id="season-toggle" role="tablist" aria-label="Ratings scope">
+        <button type="button" class="seg-btn is-active" data-scope="all_time" role="tab" aria-selected="true">All&#8209;time</button>
+        <button type="button" class="seg-btn" data-scope="season" role="tab" aria-selected="false">This season</button>
+      </div>
+      <div class="meta" id="meta-line">&nbsp;</div>
+    </div>
   </div>
+
+  <section class="movers" id="movers-section" hidden>
+    <div class="movers-col">
+      <h2 class="movers-title movers-title-up">Rising</h2>
+      <ol class="movers-list" id="movers-up"></ol>
+    </div>
+    <div class="movers-col">
+      <h2 class="movers-title movers-title-down">Falling</h2>
+      <ol class="movers-list" id="movers-down"></ol>
+    </div>
+  </section>
 
   <table id="board">
     <thead>
@@ -55,7 +81,8 @@
     home-field bump before expected result is calculated, and rating swings
     scale with margin of victory &mdash; a 3&ndash;0 moves the needle more than a 1&ndash;0.
     K&#8209;factor and home advantage are tuned for a semi-pro league where
-    rosters shift week to week.
+    rosters shift week to week. Tap any club&rsquo;s form sparkline for its full
+    rating history.
   </p>
 
   <footer>
@@ -64,6 +91,17 @@
     <span>data via Sofascore</span>
   </footer>
 </main>
+
+<div class="modal-overlay" id="modal-overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-team-name">
+    <button type="button" class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-header">
+      <div class="modal-team-name" id="modal-team-name"></div>
+      <div class="modal-team-sub" id="modal-team-sub"></div>
+    </div>
+    <div class="modal-chart-wrap" id="modal-chart-wrap"></div>
+  </div>
+</div>
 
 <script src="app.js"></script>
 </body>

@@ -19,9 +19,17 @@ differently than soccer needs):
 All teams start at 1500. Matches are processed in chronological order.
 Only matches with status "Ended" are counted.
 
+Produces two independent rating sets from the same match data:
+  - "all-time": every match ever played (post-PDL rebrand), one
+    continuous running rating per club.
+  - "season": ratings reset to 1500 and recomputed using only matches
+    from the most recent season present in the data.
+
 Writes:
-    docs/data/ratings.json  -- current ranking table
-    docs/data/history.json  -- rating trajectory per team (for sparklines)
+    docs/data/ratings.json          -- all-time ranking table
+    docs/data/history.json          -- all-time rating trajectory (sparklines)
+    docs/data/ratings_season.json   -- current-season-only ranking table
+    docs/data/history_season.json   -- current-season-only rating trajectory
 """
 import json
 from pathlib import Path
@@ -35,6 +43,8 @@ K_FACTOR = 26.0           # domestic-league-appropriate; eloratings.net uses
                            # 20 (friendly) to 60 (World Cup); this sits in
                            # between since USL2 results are competitive but
                            # squads/rosters can be fluid week to week.
+RECENT_FORM_WINDOW = 5    # "recent movers" = rating change over each club's
+                           # last N matches (or fewer, if they haven't played N yet)
 # --------------------------------------------------------------------------
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -52,22 +62,13 @@ def goal_diff_multiplier(goal_diff: int) -> float:
     return (11 + n) / 8.0
 
 
-def main():
-    matches_path = DATA_DIR / "matches.csv"
-    if not matches_path.exists():
-        raise SystemExit(f"{matches_path} not found -- run fetch_data.py first.")
-
-    df = pd.read_csv(matches_path)
-
-    finished = df[df["status"] == "Ended"].copy()
-    finished = finished.dropna(subset=["home_score_current", "away_score_current"])
-    finished["start_timestamp"] = pd.to_numeric(finished["start_timestamp"], errors="coerce")
-    finished = finished.sort_values("start_timestamp", kind="stable")
-
+def run_elo_pass(matches: pd.DataFrame) -> tuple[list[dict], dict[str, list]]:
+    """Replays `matches` (already filtered + chronologically sorted) and
+    returns (ranking_rows, history_by_team_id)."""
     ratings: dict[int, float] = {}
     names: dict[int, str] = {}
     record: dict[int, dict] = {}   # team_id -> {wins, draws, losses, gp}
-    history: dict[int, list] = {}  # team_id -> [{"t": timestamp, "rating": r}]
+    history: dict[int, list] = {}  # team_id -> [{"t": timestamp, "rating": r}, ...]
 
     def ensure_team(team_id: int, name: str):
         if team_id not in ratings:
@@ -76,7 +77,7 @@ def main():
             record[team_id] = {"wins": 0, "draws": 0, "losses": 0, "gp": 0}
             history[team_id] = [{"t": None, "rating": STARTING_RATING}]
 
-    for _, row in finished.iterrows():
+    for _, row in matches.iterrows():
         hid, aid = int(row["home_team_id"]), int(row["away_team_id"])
         ensure_team(hid, row["home_team"])
         ensure_team(aid, row["away_team"])
@@ -118,6 +119,9 @@ def main():
     rows = []
     for tid, rating in ratings.items():
         rec = record[tid]
+        hist = history[tid]
+        n = min(RECENT_FORM_WINDOW, rec["gp"])
+        delta_recent = round(hist[-1]["rating"] - hist[-1 - n]["rating"], 1) if n > 0 else 0.0
         rows.append({
             "team_id": tid,
             "team": names[tid],
@@ -126,32 +130,74 @@ def main():
             "wins": rec["wins"],
             "draws": rec["draws"],
             "losses": rec["losses"],
+            "delta_recent": delta_recent,
+            "delta_recent_games": n,
         })
 
     rows.sort(key=lambda r: r["rating"], reverse=True)
     for i, r in enumerate(rows, start=1):
         r["rank"] = i
 
+    history_out = {str(tid): hist for tid, hist in history.items()}
+    return rows, history_out
+
+
+def write_output(rows, history_out, fetched_at, matches_used, filename_suffix="", extra_meta=None):
+    ratings_out = {
+        "generated_at_utc": pd.Timestamp.now('UTC').isoformat(),
+        "data_fetched_at_utc": fetched_at,
+        "matches_used": matches_used,
+        "k_factor": K_FACTOR,
+        "home_advantage": HOME_ADVANTAGE,
+        "starting_rating": STARTING_RATING,
+        "recent_form_window": RECENT_FORM_WINDOW,
+        "teams": rows,
+    }
+    if extra_meta:
+        ratings_out.update(extra_meta)
+
+    ratings_path = OUT_DIR / f"ratings{filename_suffix}.json"
+    ratings_path.write_text(json.dumps(ratings_out, indent=2))
+    print(f"Wrote {ratings_path} ({len(rows)} teams, {matches_used} matches)")
+
+    history_path = OUT_DIR / f"history{filename_suffix}.json"
+    history_path.write_text(json.dumps(history_out))
+    print(f"Wrote {history_path}")
+
+
+def main():
+    matches_path = DATA_DIR / "matches.csv"
+    if not matches_path.exists():
+        raise SystemExit(f"{matches_path} not found -- run fetch_data.py first.")
+
+    df = pd.read_csv(matches_path)
+
+    finished = df[df["status"] == "Ended"].copy()
+    finished = finished.dropna(subset=["home_score_current", "away_score_current"])
+    finished["start_timestamp"] = pd.to_numeric(finished["start_timestamp"], errors="coerce")
+    finished = finished.sort_values("start_timestamp", kind="stable")
+
     meta_path = DATA_DIR / "meta.json"
     fetched_at = None
     if meta_path.exists():
         fetched_at = json.loads(meta_path.read_text()).get("fetched_at_utc")
 
-    ratings_out = {
-        "generated_at_utc": pd.Timestamp.now('UTC').isoformat(),
-        "data_fetched_at_utc": fetched_at,
-        "matches_used": len(finished),
-        "k_factor": K_FACTOR,
-        "home_advantage": HOME_ADVANTAGE,
-        "starting_rating": STARTING_RATING,
-        "teams": rows,
-    }
-    (OUT_DIR / "ratings.json").write_text(json.dumps(ratings_out, indent=2))
-    print(f"Wrote {OUT_DIR / 'ratings.json'} ({len(rows)} teams, {len(finished)} matches)")
+    # --- all-time pass: every match ever played, one continuous rating ---
+    rows_all, history_all = run_elo_pass(finished)
+    write_output(rows_all, history_all, fetched_at, len(finished))
 
-    history_out = {str(tid): hist for tid, hist in history.items()}
-    (OUT_DIR / "history.json").write_text(json.dumps(history_out))
-    print(f"Wrote {OUT_DIR / 'history.json'}")
+    # --- current-season pass: reset to 1500, only this season's matches ---
+    if "season" in finished.columns and finished["season"].notna().any():
+        current_season_year = int(finished["season"].dropna().max())
+        season_matches = finished[finished["season"] == current_season_year]
+        rows_season, history_season = run_elo_pass(season_matches)
+        write_output(
+            rows_season, history_season, fetched_at, len(season_matches),
+            filename_suffix="_season",
+            extra_meta={"season_year": current_season_year},
+        )
+    else:
+        print("No 'season' column found -- skipping season-only output.")
 
 
 if __name__ == "__main__":
