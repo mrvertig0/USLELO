@@ -41,7 +41,27 @@ log = logging.getLogger("fetch_data")
 # Sofascore's unique-tournament id for USL League Two. Confirmed via
 # https://www.sofascore.com/football/tournament/usa/usl-league-two/13546
 TOURNAMENT_ID = 13546
-TOURNAMENT_NAME_FILTER = "usl league two"  # case-insensitive substring match
+
+# The tournament name Sofascore actually returns is "USL, League Two"
+# (yes, with a comma) -- confirmed by inspecting real team history data.
+# Rather than hardcode that one exact string and risk missing another
+# punctuation/spacing variant, we normalize away punctuation before
+# matching. We keep anything that's USL + "league two" in some form,
+# and explicitly exclude the league's old PDL branding (Premier
+# Development League) even though it's the same competition lineage,
+# since PDL-era results predate the modern USL2 format.
+import re
+
+
+def _normalize_tournament_name(name) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", str(name).lower()).strip()
+
+
+def _is_usl2(name) -> bool:
+    norm = _normalize_tournament_name(name)
+    if "premier development" in norm or re.search(r"\bpdl\b", norm):
+        return False
+    return "usl" in norm and "league two" in norm
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -112,7 +132,7 @@ def fetch_full_history_for_teams(team_ids: set[int], data_source: str) -> pd.Dat
                 log.warning("team_id=%s: still failing, skipping (%s)", team_id, e2)
                 continue
 
-        usl2_df = df[df["tournament"].astype(str).str.lower().str.contains(TOURNAMENT_NAME_FILTER, na=False)]
+        usl2_df = df[df["tournament"].apply(_is_usl2)]
         frames.append(usl2_df)
         log.info("team %3d/%d (id=%s): %d USL2 matches in history", i, len(team_ids), team_id, len(usl2_df))
 
