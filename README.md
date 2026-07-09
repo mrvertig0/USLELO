@@ -8,11 +8,19 @@ An unofficial, auto-updating Elo power ranking for every club in USL League Two.
 ## How it works
 
 ```
-scripts/fetch_data.py   -> pulls match results from Sofascore's public API
-                            (via the `datafc` package) -> data/matches.csv
-scripts/compute_elo.py  -> replays every finished match chronologically,
-                            computes Elo per club -> docs/data/ratings.json
-                                                      docs/data/history.json
+scripts/leagues.py       -> config: one entry per league (Sofascore
+                             tournament_id + a name filter). Add a new
+                             league here -- both scripts below loop over
+                             it automatically.
+scripts/fetch_data.py    -> pulls match results from Sofascore's public API
+                             (via the `datafc` package) for every league in
+                             leagues.py -> data/matches_<key>.csv
+scripts/compute_elo.py   -> replays every finished match chronologically,
+                             computes Elo per club, per league ->
+                             docs/data/ratings_<key>.json
+                             docs/data/history_<key>.json
+                             docs/data/ratings_<key>_season.json
+                             docs/data/history_<key>_season.json
 scripts/run_update.ps1  -> runs the two scripts above, then commits + pushes
                             if anything changed. Run this from YOUR computer
                             (see "Automating the daily update" below) --
@@ -80,10 +88,19 @@ want to tune them.
 
 ```bash
 pip3 install -r requirements.txt
-python3 scripts/fetch_data.py      # writes data/matches.csv
-python3 scripts/compute_elo.py     # writes docs/data/ratings.json + history.json
+python3 scripts/fetch_data.py      # writes data/matches_<key>.csv for every league
+python3 scripts/compute_elo.py     # writes docs/data/ratings_<key>.json + history files
 python3 -m http.server 8000 --directory docs   # open http://localhost:8000
 ```
+
+Add `--league usl2` (or `--league wleague`) to `fetch_data.py` to pull just
+one league while testing -- `compute_elo.py` always processes whatever
+`data/matches_*.csv` files it finds.
+
+To add another league entirely, add one entry to `scripts/leagues.py`
+(Sofascore tournament_id + a name-matching function) and add a matching
+tab in `docs/index.html`'s `#league-tabs` + `LEAGUES` object in
+`docs/app.js` -- everything else picks it up automatically.
 
 **If `pip3 install` fails with an "externally-managed-environment"
 error** (common on newer Macs with Homebrew Python): either add

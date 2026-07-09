@@ -78,6 +78,33 @@ body {
 
 .hero-accent { color: var(--turf-bright); }
 
+.league-tabs {
+  display: inline-flex;
+  gap: 0.4rem;
+  margin-bottom: 1.3rem;
+}
+
+.league-tab {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(246, 244, 238, 0.7);
+  background: rgba(246, 244, 238, 0.08);
+  border: 1px solid rgba(246, 244, 238, 0.18);
+  border-radius: 999px;
+  padding: 0.4rem 0.95rem;
+  cursor: pointer;
+}
+
+.league-tab:hover { background: rgba(246, 244, 238, 0.14); }
+
+.league-tab.is-active {
+  background: var(--turf-bright);
+  border-color: var(--turf-bright);
+  color: var(--pitch-deep);
+  font-weight: 600;
+}
+
 .hero-lead {
   display: flex;
   align-items: baseline;
@@ -435,4 +462,6 @@ footer {
   #search { min-width: 0; flex: 1 1 auto; }
   .modal { padding: 1.2rem; }
   .modal-team-name { font-size: 1.4rem; }
+  .league-tabs { flex-wrap: wrap; }
+  .league-tab { font-size: 0.8rem; padding: 0.35rem 0.8rem; }
 }

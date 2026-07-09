@@ -1,5 +1,6 @@
 """
-Compute Elo ratings for USL League Two teams from data/matches.csv.
+Compute Elo ratings for every league defined in leagues.py from
+data/matches_<key>.csv.
 
 Uses the "World Football Elo Ratings" formula (the same approach as
 eloratings.net), which is the standard, well-documented way to Elo-rate
@@ -19,29 +20,30 @@ differently than soccer needs):
 All teams start at 1500. Matches are processed in chronological order.
 Only matches with status "Ended" are counted.
 
-Produces two independent rating sets from the same match data:
-  - "all-time": every match ever played (post-PDL rebrand), one
-    continuous running rating per club.
+Produces two independent rating sets per league from the same match data:
+  - "all-time": every match ever played, one continuous running rating.
   - "season": ratings reset to 1500 and recomputed using only matches
-    from the most recent season present in the data.
+    from the most recent season present in that league's data.
 
-Writes:
-    docs/data/ratings.json          -- all-time ranking table
-    docs/data/history.json          -- all-time rating trajectory (sparklines)
-    docs/data/ratings_season.json   -- current-season-only ranking table
-    docs/data/history_season.json   -- current-season-only rating trajectory
+Writes, per league key:
+    docs/data/ratings_<key>.json          -- all-time ranking table
+    docs/data/history_<key>.json          -- all-time rating trajectory
+    docs/data/ratings_<key>_season.json   -- current-season-only ranking table
+    docs/data/history_<key>_season.json   -- current-season-only trajectory
 """
 import json
 from pathlib import Path
 
 import pandas as pd
 
+from leagues import LEAGUES
+
 # --- tunables -----------------------------------------------------------
 STARTING_RATING = 1500.0
 HOME_ADVANTAGE = 60.0     # rating points added to home side before Elo calc
 K_FACTOR = 26.0           # domestic-league-appropriate; eloratings.net uses
                            # 20 (friendly) to 60 (World Cup); this sits in
-                           # between since USL2 results are competitive but
+                           # between since these leagues are competitive but
                            # squads/rosters can be fluid week to week.
 RECENT_FORM_WINDOW = 5    # "recent movers" = rating change over each club's
                            # last N matches (or fewer, if they haven't played N yet)
@@ -142,7 +144,7 @@ def run_elo_pass(matches: pd.DataFrame) -> tuple[list[dict], dict[str, list]]:
     return rows, history_out
 
 
-def write_output(rows, history_out, fetched_at, matches_used, filename_suffix="", extra_meta=None):
+def write_output(rows, history_out, fetched_at, matches_used, path_prefix, extra_meta=None):
     ratings_out = {
         "generated_at_utc": pd.Timestamp.now('UTC').isoformat(),
         "data_fetched_at_utc": fetched_at,
@@ -156,20 +158,22 @@ def write_output(rows, history_out, fetched_at, matches_used, filename_suffix=""
     if extra_meta:
         ratings_out.update(extra_meta)
 
-    ratings_path = OUT_DIR / f"ratings{filename_suffix}.json"
+    ratings_path = OUT_DIR / f"ratings_{path_prefix}.json"
     ratings_path.write_text(json.dumps(ratings_out, indent=2))
     print(f"Wrote {ratings_path} ({len(rows)} teams, {matches_used} matches)")
 
-    history_path = OUT_DIR / f"history{filename_suffix}.json"
+    history_path = OUT_DIR / f"history_{path_prefix}.json"
     history_path.write_text(json.dumps(history_out))
     print(f"Wrote {history_path}")
 
 
-def main():
-    matches_path = DATA_DIR / "matches.csv"
+def compute_league(key: str, cfg: dict):
+    matches_path = DATA_DIR / f"matches_{key}.csv"
     if not matches_path.exists():
-        raise SystemExit(f"{matches_path} not found -- run fetch_data.py first.")
+        print(f"Skipping {cfg['label']} ({key}): {matches_path} not found -- run fetch_data.py first.")
+        return
 
+    print(f"=== {cfg['label']} ({key}) ===")
     df = pd.read_csv(matches_path)
 
     finished = df[df["status"] == "Ended"].copy()
@@ -177,14 +181,14 @@ def main():
     finished["start_timestamp"] = pd.to_numeric(finished["start_timestamp"], errors="coerce")
     finished = finished.sort_values("start_timestamp", kind="stable")
 
-    meta_path = DATA_DIR / "meta.json"
+    meta_path = DATA_DIR / f"meta_{key}.json"
     fetched_at = None
     if meta_path.exists():
         fetched_at = json.loads(meta_path.read_text()).get("fetched_at_utc")
 
     # --- all-time pass: every match ever played, one continuous rating ---
     rows_all, history_all = run_elo_pass(finished)
-    write_output(rows_all, history_all, fetched_at, len(finished))
+    write_output(rows_all, history_all, fetched_at, len(finished), key)
 
     # --- current-season pass: reset to 1500, only this season's matches ---
     if "season" in finished.columns and finished["season"].notna().any():
@@ -193,11 +197,16 @@ def main():
         rows_season, history_season = run_elo_pass(season_matches)
         write_output(
             rows_season, history_season, fetched_at, len(season_matches),
-            filename_suffix="_season",
+            f"{key}_season",
             extra_meta={"season_year": current_season_year},
         )
     else:
-        print("No 'season' column found -- skipping season-only output.")
+        print(f"No 'season' column found for {key} -- skipping season-only output.")
+
+
+def main():
+    for key, cfg in LEAGUES.items():
+        compute_league(key, cfg)
 
 
 if __name__ == "__main__":

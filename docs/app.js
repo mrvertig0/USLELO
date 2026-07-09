@@ -9,6 +9,7 @@
   var heroTeamName = document.getElementById("hero-team-name");
   var heroTeamRecord = document.getElementById("hero-team-record");
   var heroNote = document.getElementById("hero-note");
+  var leagueTabs = document.getElementById("league-tabs");
   var seasonToggle = document.getElementById("season-toggle");
   var moversSection = document.getElementById("movers-section");
   var moversUp = document.getElementById("movers-up");
@@ -19,8 +20,20 @@
   var modalTeamSub = document.getElementById("modal-team-sub");
   var modalChartWrap = document.getElementById("modal-chart-wrap");
 
-  // datasets keyed by scope: "all_time" | "season"
-  var datasets = {};
+  var LEAGUES = {
+    usl2: {
+      label: "USL League Two",
+      allTimeNote: "Every result since the league's post-PDL rebrand, folded into one running rating. Recalculated after every update.",
+    },
+    wleague: {
+      label: "USL W League",
+      allTimeNote: "Every result since the league launched, folded into one running rating. Recalculated after every update.",
+    },
+  };
+
+  // datasets[league][scope] = { ratings, teams, history }
+  var datasets = { usl2: {}, wleague: {} };
+  var activeLeague = "usl2";
   var activeScope = "all_time";
 
   function fmtDate(iso) {
@@ -77,7 +90,6 @@
     var max = Math.max.apply(null, vals);
     var stroke = built.trendUp ? "var(--up)" : "var(--down)";
 
-    // horizontal gridlines at min / mid / max
     var mid = (min + max) / 2;
     var gridVals = [min, mid, max];
     var gridLines = gridVals.map(function (v) {
@@ -167,12 +179,12 @@
 
   function renderMovers(teams) {
     var eligible = teams.filter(function (t) { return t.delta_recent_games >= 2; });
-    var up = eligible.slice().sort(function (a, b) { return b.delta_recent - a.delta_recent; }).slice(0, 5);
+    var up = eligible.slice().sort(function (a, b) { return b.delta_recent - a.delta_recent; }).slice(0, 5)
+      .filter(function (t) { return t.delta_recent > 0; });
     var down = eligible.slice().sort(function (a, b) { return a.delta_recent - b.delta_recent; }).slice(0, 5)
       .filter(function (t) { return t.delta_recent < 0; });
-    var upFiltered = up.filter(function (t) { return t.delta_recent > 0; });
 
-    if (!upFiltered.length && !down.length) {
+    if (!up.length && !down.length) {
       moversSection.hidden = true;
       return;
     }
@@ -195,12 +207,12 @@
       });
     }
 
-    renderList(moversUp, upFiltered, 1);
+    renderList(moversUp, up, 1);
     renderList(moversDown, down, -1);
   }
 
   function applyFilter() {
-    var ds = datasets[activeScope];
+    var ds = datasets[activeLeague][activeScope];
     if (!ds) return;
     var q = searchInput.value.trim().toLowerCase();
     var teams = q ? ds.teams.filter(function (t) { return t.team.toLowerCase().indexOf(q) !== -1; }) : ds.teams;
@@ -209,13 +221,19 @@
 
   searchInput.addEventListener("input", applyFilter);
 
-  function renderScope(scope) {
-    var ds = datasets[scope];
-    if (!ds) return;
-    activeScope = scope;
+  function render() {
+    var ds = datasets[activeLeague][activeScope];
+    if (!ds) {
+      boardBody.innerHTML = '<tr><td colspan="8" class="empty-row">No data yet for this view.</td></tr>';
+      metaLine.textContent = "";
+      heroTeamName.textContent = "No data yet";
+      heroNum.textContent = "\u2014";
+      moversSection.hidden = true;
+      return;
+    }
 
     metaLine.textContent = ds.teams.length + " clubs \u00b7 " + ds.ratings.matches_used + " matches" +
-      (scope === "season" && ds.ratings.season_year ? " \u00b7 " + ds.ratings.season_year + " season" : " \u00b7 all-time");
+      (activeScope === "season" && ds.ratings.season_year ? " \u00b7 " + ds.ratings.season_year + " season" : " \u00b7 all-time");
     footerUpdated.textContent = "ratings last computed " + fmtDate(ds.ratings.generated_at_utc) +
       (ds.ratings.data_fetched_at_utc ? " \u00b7 data pulled " + fmtDate(ds.ratings.data_fetched_at_utc) : "");
 
@@ -226,24 +244,37 @@
       heroTeamRecord.textContent = top.wins + "W " + top.draws + "D " + top.losses + "L";
     }
 
-    heroNote.textContent = scope === "season"
+    heroNote.textContent = activeScope === "season"
       ? "Reset to a level field at the start of " + (ds.ratings.season_year || "this season") + " and rebuilt from just this season's results."
-      : "Every result since the league's post-PDL rebrand, folded into one running rating. Recalculated after every update.";
+      : LEAGUES[activeLeague].allTimeNote;
 
     renderMovers(ds.teams);
     applyFilter();
   }
 
+  leagueTabs.addEventListener("click", function (e) {
+    var btn = e.target.closest(".league-tab");
+    if (!btn) return;
+    var league = btn.dataset.league;
+    if (league === activeLeague) return;
+    activeLeague = league;
+    Array.prototype.forEach.call(leagueTabs.querySelectorAll(".league-tab"), function (b) {
+      b.classList.toggle("is-active", b === btn);
+      b.setAttribute("aria-selected", b === btn ? "true" : "false");
+    });
+    render();
+  });
+
   seasonToggle.addEventListener("click", function (e) {
     var btn = e.target.closest(".seg-btn");
     if (!btn) return;
     var scope = btn.dataset.scope;
-    if (!datasets[scope]) return; // season data unavailable, ignore
+    activeScope = scope;
     Array.prototype.forEach.call(seasonToggle.querySelectorAll(".seg-btn"), function (b) {
       b.classList.toggle("is-active", b === btn);
       b.setAttribute("aria-selected", b === btn ? "true" : "false");
     });
-    renderScope(scope);
+    render();
   });
 
   function loadJson(path) {
@@ -253,27 +284,21 @@
     });
   }
 
-  Promise.all([
-    loadJson("data/ratings.json"),
-    loadJson("data/history.json").catch(function () { return {}; }),
-  ])
-    .then(function (results) {
-      datasets.all_time = { ratings: results[0], teams: results[0].teams || [], history: results[1] || {} };
+  function loadLeague(key) {
+    return Promise.all([
+      loadJson("data/ratings_" + key + ".json").catch(function () { return null; }),
+      loadJson("data/history_" + key + ".json").catch(function () { return {}; }),
+      loadJson("data/ratings_" + key + "_season.json").catch(function () { return null; }),
+      loadJson("data/history_" + key + "_season.json").catch(function () { return {}; }),
+    ]).then(function (r) {
+      if (r[0]) datasets[key].all_time = { ratings: r[0], teams: r[0].teams || [], history: r[1] || {} };
+      if (r[2]) datasets[key].season = { ratings: r[2], teams: r[2].teams || [], history: r[3] || {} };
+    });
+  }
 
-      // Season dataset is optional -- older deployments or a fresh setup
-      // might not have it yet. Fail quietly and just hide the toggle.
-      return Promise.all([
-        loadJson("data/ratings_season.json").catch(function () { return null; }),
-        loadJson("data/history_season.json").catch(function () { return {}; }),
-      ]);
-    })
-    .then(function (results) {
-      if (results[0]) {
-        datasets.season = { ratings: results[0], teams: results[0].teams || [], history: results[1] || {} };
-      } else {
-        seasonToggle.hidden = true;
-      }
-      renderScope("all_time");
+  Promise.all([loadLeague("usl2"), loadLeague("wleague")])
+    .then(function () {
+      render();
     })
     .catch(function (err) {
       boardBody.innerHTML =

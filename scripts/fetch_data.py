@@ -1,6 +1,6 @@
 """
-Fetch USL League Two match results from Sofascore's public API (via the
-`datafc` package) and save them to data/matches.csv.
+Fetch match results for every league defined in leagues.py from
+Sofascore's public API (via the `datafc` package).
 
 Sofascore has no official public docs for this, but the endpoints are
 widely used and documented in open-source projects (e.g. LanusStats,
@@ -9,22 +9,24 @@ per match, which avoids the ambiguity you get scraping rendered text
 (team names like "Loudoun United FC 2" collide with score digits when
 you regex flattened text -- structured JSON avoids that entirely).
 
-Strategy: USL2 has no unified matchday numbering (each of its ~20
-divisions runs its own schedule), so Sofascore's round-based endpoint
-doesn't return the full season -- round 1 comes back as a single
-oddly-sized bucket and every other round number 404s. Instead, we:
+Strategy per league: these leagues have no unified matchday numbering
+(each division runs its own schedule), so Sofascore's round-based
+endpoint doesn't return the full season -- round 1 comes back as a
+single oddly-sized bucket and every other round number 404s. Instead:
   1. Do one round-1 pull just to discover every team_id in the league.
   2. Fetch each team's COMPLETE match history (a separate, properly
-     paginated endpoint), filtered down to USL League Two games.
+     paginated endpoint), filtered down to that league's games.
   3. Dedupe by game_id (every match appears in two teams' histories).
 
 Usage:
-    python scripts/fetch_data.py
+    python scripts/fetch_data.py                # all leagues
+    python scripts/fetch_data.py --league usl2   # just one (for testing)
 
-Writes:
-    data/matches.csv   -- one row per match (finished + scheduled)
-    data/meta.json      -- tournament/season id + last-fetch timestamp
+Writes, per league key:
+    data/matches_<key>.csv   -- one row per match (finished + scheduled)
+    data/meta_<key>.json      -- tournament/season id + last-fetch timestamp
 """
+import argparse
 import json
 import logging
 import sys
@@ -35,37 +37,13 @@ import pandas as pd
 from datafc import match_data, seasons_data, team_match_history_data
 from datafc.exceptions import DataNotAvailableError, APIError
 
+from leagues import LEAGUES
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("fetch_data")
 
-# Sofascore's unique-tournament id for USL League Two. Confirmed via
-# https://www.sofascore.com/football/tournament/usa/usl-league-two/13546
-TOURNAMENT_ID = 13546
-
-# The tournament name Sofascore actually returns is "USL, League Two"
-# (yes, with a comma) -- confirmed by inspecting real team history data.
-# Rather than hardcode that one exact string and risk missing another
-# punctuation/spacing variant, we normalize away punctuation before
-# matching. We keep anything that's USL + "league two" in some form,
-# and explicitly exclude the league's old PDL branding (Premier
-# Development League) even though it's the same competition lineage,
-# since PDL-era results predate the modern USL2 format.
-import re
-
-
-def _normalize_tournament_name(name) -> str:
-    return re.sub(r"[^a-z0-9]+", " ", str(name).lower()).strip()
-
-
-def _is_usl2(name) -> bool:
-    norm = _normalize_tournament_name(name)
-    if "premier development" in norm or re.search(r"\bpdl\b", norm):
-        return False
-    return "usl" in norm and "league two" in norm
-
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
-
 
 # Sofascore's main API domain sometimes 403s requests from cloud/CI IP
 # ranges (GitHub Actions runners, etc.) even though the same request works
@@ -94,7 +72,7 @@ def get_current_season_id(tournament_id: int, data_source: str) -> tuple[int, st
     but prefer one whose name/year contains the current year if present."""
     seasons_df = seasons_data(tournament_id, data_source=data_source)
     if seasons_df.empty:
-        raise RuntimeError("No seasons returned for USL League Two tournament id.")
+        raise RuntimeError(f"No seasons returned for tournament_id={tournament_id}.")
 
     import datetime
     this_year = str(datetime.datetime.now().year)
@@ -115,7 +93,7 @@ def discover_team_ids(tournament_id: int, season_id: int, data_source: str) -> s
     return ids
 
 
-def fetch_full_history_for_teams(team_ids: set[int], data_source: str) -> pd.DataFrame:
+def fetch_full_history_for_teams(team_ids: set[int], data_source: str, name_filter) -> pd.DataFrame:
     frames = []
     for i, team_id in enumerate(sorted(team_ids), start=1):
         try:
@@ -132,38 +110,54 @@ def fetch_full_history_for_teams(team_ids: set[int], data_source: str) -> pd.Dat
                 log.warning("team_id=%s: still failing, skipping (%s)", team_id, e2)
                 continue
 
-        usl2_df = df[df["tournament"].apply(_is_usl2)]
-        frames.append(usl2_df)
-        log.info("team %3d/%d (id=%s): %d USL2 matches in history", i, len(team_ids), team_id, len(usl2_df))
+        league_df = df[df["tournament"].apply(name_filter)]
+        frames.append(league_df)
+        log.info("team %3d/%d (id=%s): %d matches in history", i, len(team_ids), team_id, len(league_df))
 
     if not frames:
         raise RuntimeError("No match data fetched at all -- check tournament/season id or team discovery.")
 
     all_matches = pd.concat(frames, ignore_index=True)
     all_matches = all_matches.drop_duplicates(subset=["game_id"]).reset_index(drop=True)
+
+    discovered_ids = set(all_matches["home_team_id"].dropna().astype(int)) | set(all_matches["away_team_id"].dropna().astype(int))
+    extra = len(discovered_ids) - len(team_ids)
+    if extra > 0:
+        log.info(
+            "note: %d additional clubs appear in history beyond the %d seed teams -- "
+            "these are past-season opponents (promoted/relegated/rebranded clubs) pulled "
+            "in via all-time match history. This is expected, not a data gap.",
+            extra, len(team_ids),
+        )
+
     return all_matches
 
 
-def main():
-    log.info("Checking which Sofascore endpoint is reachable from this machine...")
-    data_source = pick_working_data_source(TOURNAMENT_ID)
+def fetch_league(key: str, cfg: dict):
+    log.info("=== %s (%s) ===", cfg["label"], key)
+    tournament_id = cfg["tournament_id"]
 
-    log.info("Looking up current USL League Two season...")
-    season_id, season_name = get_current_season_id(TOURNAMENT_ID, data_source)
+    log.info("Checking which Sofascore endpoint is reachable from this machine...")
+    data_source = pick_working_data_source(tournament_id)
+
+    log.info("Looking up current season...")
+    season_id, season_name = get_current_season_id(tournament_id, data_source)
     log.info("Using season_id=%s (%s)", season_id, season_name)
 
-    team_ids = discover_team_ids(TOURNAMENT_ID, season_id, data_source)
+    team_ids = discover_team_ids(tournament_id, season_id, data_source)
 
     log.info("Fetching complete match history for each of %d teams (this takes a few minutes)...", len(team_ids))
-    df = fetch_full_history_for_teams(team_ids, data_source)
-    log.info("Fetched %d total USL2 matches (all statuses) after dedup", len(df))
+    df = fetch_full_history_for_teams(team_ids, data_source, cfg["name_filter"])
+    log.info("Fetched %d total matches (all statuses) after dedup", len(df))
 
-    out_csv = DATA_DIR / "matches.csv"
+    out_csv = DATA_DIR / f"matches_{key}.csv"
     df.to_csv(out_csv, index=False)
     log.info("Wrote %s", out_csv)
 
     meta = {
-        "tournament_id": TOURNAMENT_ID,
+        "league": key,
+        "label": cfg["label"],
+        "tournament_id": tournament_id,
         "season_id": season_id,
         "season_name": season_name,
         "data_source": data_source,
@@ -171,8 +165,20 @@ def main():
         "fetched_at_utc": pd.Timestamp.now('UTC').isoformat(),
         "match_count": len(df),
     }
-    (DATA_DIR / "meta.json").write_text(json.dumps(meta, indent=2))
-    log.info("Wrote %s", DATA_DIR / "meta.json")
+    meta_path = DATA_DIR / f"meta_{key}.json"
+    meta_path.write_text(json.dumps(meta, indent=2))
+    log.info("Wrote %s", meta_path)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--league", choices=list(LEAGUES.keys()), default=None,
+                         help="Fetch just one league (default: all leagues in leagues.py)")
+    args = parser.parse_args()
+
+    keys = [args.league] if args.league else list(LEAGUES.keys())
+    for key in keys:
+        fetch_league(key, LEAGUES[key])
 
 
 if __name__ == "__main__":

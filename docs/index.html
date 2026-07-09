@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>USL2 Elo — League Two Power Rankings</title>
-<meta name="description" content="An unofficial, auto-updating Elo power ranking for every club in USL League Two, since the league's post-PDL rebrand.">
+<title>USL Elo — Power Rankings</title>
+<meta name="description" content="Unofficial, auto-updating Elo power rankings for USL League Two and USL W League clubs.">
 <meta name="theme-color" content="#163a2b">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="USL2 Elo — League Two Power Rankings">
-<meta property="og:description" content="An unofficial, auto-updating Elo power ranking for every club in USL League Two.">
+<meta property="og:title" content="USL Elo — Power Rankings">
+<meta property="og:description" content="Unofficial, auto-updating Elo power rankings for USL League Two and USL W League clubs.">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
@@ -21,7 +21,11 @@
 
 <header class="hero">
   <div class="hero-inner">
-    <p class="eyebrow">USL League Two &middot; unofficial</p>
+    <p class="eyebrow">Unofficial power rankings</p>
+    <div class="league-tabs" id="league-tabs" role="tablist" aria-label="League">
+      <button type="button" class="league-tab is-active" data-league="usl2" role="tab" aria-selected="true">USL League Two</button>
+      <button type="button" class="league-tab" data-league="wleague" role="tab" aria-selected="false">USL W League</button>
+    </div>
     <h1>Elo<span class="hero-accent">.</span></h1>
     <div class="hero-lead" id="hero-lead">
       <div class="hero-num" id="hero-num">&mdash;</div>
