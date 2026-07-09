@@ -1,17 +1,26 @@
-name: Update USL2 Elo ratings
+name: Publish USL2 Elo site
+
+# This workflow only PUBLISHES the site -- it does not fetch data itself.
+#
+# Why: the data-fetch step (scripts/fetch_data.py) talks to Sofascore's
+# API, which sits behind Cloudflare. Cloudflare blocks GitHub Actions'
+# IP ranges outright (a very common, well-known block -- it's an
+# IP-reputation block, not something fixable with headers or retries).
+# So the fetch has to run somewhere with a normal residential IP
+# instead: your own computer, on a schedule. See README.md ("Automating
+# the daily update") for how that's set up.
+#
+# This workflow just takes whatever is currently in docs/ and (re)publishes
+# it to GitHub Pages, any time main changes -- including when your
+# scheduled local script pushes new data.
 
 on:
-  schedule:
-    - cron: "15 9 * * *"
-  workflow_dispatch: {}
   push:
     branches: [main]
-    paths:
-      - "scripts/**"
-      - "requirements.txt"
+  workflow_dispatch: {}
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -20,58 +29,13 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  update-data:
-    runs-on: ubuntu-latest
-    outputs:
-      changed: ${{ steps.diff.outputs.changed }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Fetch match data
-        run: python scripts/fetch_data.py
-
-      - name: Compute Elo ratings
-        run: python scripts/compute_elo.py
-
-      - name: Check for changes
-        id: diff
-        run: |
-          if git diff --quiet -- data docs/data; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Commit updated data
-        if: steps.diff.outputs.changed == 'true'
-        run: |
-          git config user.name "usl2-elo-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add data docs/data
-          git commit -m "Update ratings [automated]"
-          git push
-
   deploy-pages:
-    needs: update-data
-    if: always()
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
-
-      - name: Pull latest (in case update-data committed)
-        run: git pull --ff-only
 
       - uses: actions/configure-pages@v5
 
