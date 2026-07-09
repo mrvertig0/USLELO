@@ -3,6 +3,7 @@
   "season_id": 90245,
   "season_name": "USL League Two 2026",
   "data_source": "sofascore",
-  "fetched_at_utc": "2026-07-09T16:56:14.616267+00:00",
-  "match_count": 496
+  "team_count": 158,
+  "fetched_at_utc": "2026-07-09T18:15:45.852790+00:00",
+  "match_count": 774
 }
