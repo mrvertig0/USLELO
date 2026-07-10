@@ -30,6 +30,16 @@
   var hofMostPlayed = document.getElementById("hof-most-played");
   var hofLopsided = document.getElementById("hof-lopsided");
   var hofBlowouts = document.getElementById("hof-blowouts");
+  var parlayFab = document.getElementById("parlay-fab");
+  var parlayCount = document.getElementById("parlay-count");
+  var parlayOverlay = document.getElementById("parlay-overlay");
+  var parlayClose = document.getElementById("parlay-close");
+  var parlayLegsEl = document.getElementById("parlay-legs");
+  var parlaySummary = document.getElementById("parlay-summary");
+  var parlayCombinedPct = document.getElementById("parlay-combined-pct");
+  var parlayCombinedAmerican = document.getElementById("parlay-combined-american");
+  var parlayClearBtn = document.getElementById("parlay-clear");
+  var parlayLegs = [];
   var compareOpenBtn = document.getElementById("compare-open");
   var compareOverlay = document.getElementById("compare-overlay");
   var compareClose = document.getElementById("compare-close");
@@ -426,20 +436,43 @@
     var drawRate = ratingsMeta.league_draw_rate != null ? ratingsMeta.league_draw_rate : 0.24;
     var odds = computeOdds(teamA.rating, teamB.rating, homeAdv, drawRate, compareVenue);
 
-    function card(name, p) {
+    var legs = [
+      { pick: "a", name: teamA.team, prob: odds.pA, pickLabel: teamA.team + " to win" },
+      { pick: "draw", name: "Draw", prob: odds.pDraw, pickLabel: teamA.team + " vs " + teamB.team + " to draw" },
+      { pick: "b", name: teamB.team, prob: odds.pB, pickLabel: teamB.team + " to win" },
+    ];
+
+    function card(leg) {
+      var id = parlayLegId(activeLeague, teamA.team_id, teamB.team_id, compareVenue, leg.pick);
+      var already = parlayLegs.some(function (l) { return l.id === id; });
       return (
         '<div class="compare-odds-card">' +
-        '<div class="compare-odds-name">' + escapeHtml(name) + "</div>" +
-        '<div class="compare-odds-pct">' + (p * 100).toFixed(0) + "%</div>" +
-        '<div class="compare-odds-american">' + probToAmerican(p) + "</div>" +
+        '<div class="compare-odds-name">' + escapeHtml(leg.name) + "</div>" +
+        '<div class="compare-odds-pct">' + (leg.prob * 100).toFixed(0) + "%</div>" +
+        '<div class="compare-odds-american">' + probToAmerican(leg.prob) + "</div>" +
+        '<button type="button" class="parlay-add-btn' + (already ? " is-added" : "") + '" data-pick="' + leg.pick + '"' + (already ? " disabled" : "") + ">" +
+        (already ? "Added" : "+ Parlay") + "</button>" +
         "</div>"
       );
     }
 
-    compareOddsGrid.innerHTML =
-      card(teamA.team, odds.pA) +
-      card("Draw", odds.pDraw) +
-      card(teamB.team, odds.pB);
+    compareOddsGrid.innerHTML = legs.map(card).join("");
+
+    Array.prototype.forEach.call(compareOddsGrid.querySelectorAll(".parlay-add-btn"), function (btn) {
+      btn.addEventListener("click", function () {
+        var leg = legs.filter(function (l) { return l.pick === btn.dataset.pick; })[0];
+        addParlayLeg({
+          id: parlayLegId(activeLeague, teamA.team_id, teamB.team_id, compareVenue, leg.pick),
+          league: activeLeague,
+          pickLabel: leg.pickLabel,
+          venueLabel: compareVenue === "neutral" ? "neutral venue" : (compareVenue === "a" ? teamA.team + " hosts" : teamB.team + " hosts"),
+          prob: leg.prob,
+        });
+        btn.textContent = "Added";
+        btn.classList.add("is-added");
+        btn.disabled = true;
+      });
+    });
   }
 
   function renderCompareChart(teamA, teamB, historyA, historyB) {
@@ -657,6 +690,90 @@
         '<span class="hof-value"><span class="hof-record">' + escapeHtml(date) + "</span></span>";
     });
   }
+
+  // ---------- Parlay slip ----------
+
+  function parlayLegId(league, teamAId, teamBId, venue, pick) {
+    return [league, teamAId, teamBId, venue, pick].join(":");
+  }
+
+  function updateParlayFab() {
+    parlayCount.textContent = parlayLegs.length;
+    parlayFab.classList.toggle("has-legs", parlayLegs.length > 0);
+  }
+
+  function addParlayLeg(leg) {
+    var idx = parlayLegs.findIndex(function (l) { return l.id === leg.id; });
+    if (idx >= 0) parlayLegs[idx] = leg;
+    else parlayLegs.push(leg);
+    updateParlayFab();
+  }
+
+  function removeParlayLeg(id) {
+    parlayLegs = parlayLegs.filter(function (l) { return l.id !== id; });
+    updateParlayFab();
+    renderParlay();
+  }
+
+  function combinedParlayProbability() {
+    return parlayLegs.reduce(function (acc, l) { return acc * l.prob; }, 1);
+  }
+
+  function renderParlay() {
+    parlayLegsEl.innerHTML = "";
+    if (!parlayLegs.length) {
+      parlayLegsEl.innerHTML = '<li class="parlay-empty">No picks added yet. Open Compare Clubs, pick two teams, and use "+ Parlay" on any of the three odds cards.</li>';
+      parlaySummary.hidden = true;
+      return;
+    }
+
+    parlayLegs.forEach(function (leg) {
+      var li = document.createElement("li");
+      li.className = "parlay-leg";
+      li.innerHTML =
+        '<div class="parlay-leg-main">' +
+        '<div class="parlay-leg-pick">' + escapeHtml(leg.pickLabel) + "</div>" +
+        '<div class="parlay-leg-sub">' + escapeHtml(LEAGUES[leg.league] ? LEAGUES[leg.league].label : leg.league) +
+        " \u00b7 " + escapeHtml(leg.venueLabel) + " \u00b7 " + (leg.prob * 100).toFixed(0) + "% (" + probToAmerican(leg.prob) + ")</div>" +
+        "</div>" +
+        '<button type="button" class="parlay-remove" data-id="' + leg.id + '" aria-label="Remove pick">&times;</button>';
+      parlayLegsEl.appendChild(li);
+    });
+
+    Array.prototype.forEach.call(parlayLegsEl.querySelectorAll(".parlay-remove"), function (btn) {
+      btn.addEventListener("click", function () { removeParlayLeg(btn.dataset.id); });
+    });
+
+    var combined = combinedParlayProbability();
+    parlaySummary.hidden = false;
+    parlayCombinedPct.textContent = (combined * 100).toFixed(1) + "%";
+    parlayCombinedAmerican.textContent = probToAmerican(combined);
+  }
+
+  function openParlay() {
+    renderParlay();
+    parlayOverlay.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeParlay() {
+    parlayOverlay.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  parlayFab.addEventListener("click", openParlay);
+  parlayClose.addEventListener("click", closeParlay);
+  parlayOverlay.addEventListener("click", function (e) {
+    if (e.target === parlayOverlay) closeParlay();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !parlayOverlay.hidden) closeParlay();
+  });
+  parlayClearBtn.addEventListener("click", function () {
+    parlayLegs = [];
+    updateParlayFab();
+    renderParlay();
+  });
 
   function loadLeague(key) {
     return Promise.all([

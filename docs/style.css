@@ -442,6 +442,8 @@ footer {
   padding: 1.6rem;
   max-width: 700px;
   width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
   box-shadow: 0 20px 60px rgba(14, 40, 32, 0.35);
   position: relative;
 }
@@ -665,6 +667,30 @@ footer {
   margin-top: 0.15rem;
 }
 
+.parlay-add-btn {
+  display: block;
+  width: 100%;
+  margin-top: 0.55rem;
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--turf);
+  background: rgba(79, 157, 110, 0.08);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 0.3rem 0.4rem;
+  cursor: pointer;
+}
+
+.parlay-add-btn:hover { background: rgba(79, 157, 110, 0.16); }
+
+.parlay-add-btn.is-added,
+.parlay-add-btn:disabled {
+  color: rgba(20, 35, 29, 0.45);
+  background: rgba(20, 35, 29, 0.06);
+  cursor: default;
+}
+
 .compare-disclaimer {
   font-size: 0.76rem;
   color: rgba(20, 35, 29, 0.5);
@@ -697,7 +723,15 @@ footer {
   gap: 1.4rem 1.8rem;
 }
 
-.hof-section { min-width: 0; }
+.hof-section {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.9rem 1.05rem;
+}
+
+.hof-span { grid-column: 1 / -1; }
 
 .hof-heading {
   font-family: var(--display);
@@ -710,7 +744,7 @@ footer {
 .hof-subnote {
   font-size: 0.75rem;
   color: rgba(20, 35, 29, 0.45);
-  margin: -0.3rem 0 0.5rem;
+  margin: -0.3rem 0 0.6rem;
 }
 
 .hof-list {
@@ -719,15 +753,19 @@ footer {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
 }
 
 .hof-item {
   display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.7rem;
   font-size: 0.85rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--line);
 }
+
+.hof-item:last-child { border-bottom: none; }
 
 .hof-rank {
   font-family: var(--mono);
@@ -735,6 +773,7 @@ footer {
   color: rgba(20, 35, 29, 0.4);
   flex-shrink: 0;
   width: 1.1em;
+  padding-top: 0.1em;
 }
 
 .hof-name {
@@ -744,6 +783,7 @@ footer {
   text-overflow: ellipsis;
   white-space: nowrap;
   font-weight: 500;
+  line-height: 1.35;
 }
 
 .hof-list-rivalry .hof-name { white-space: normal; }
@@ -754,6 +794,14 @@ footer {
   font-weight: 600;
   flex-shrink: 0;
   text-align: right;
+  white-space: nowrap;
+  padding-top: 0.05em;
+}
+
+.hof-list-rivalry .hof-value {
+  white-space: normal;
+  text-align: right;
+  max-width: 40%;
 }
 
 .hof-record {
@@ -765,4 +813,139 @@ footer {
   font-size: 0.8rem;
   color: rgba(20, 35, 29, 0.45);
   font-style: italic;
+}
+
+/* ---------- parlay ---------- */
+
+.parlay-fab-wrap {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 90;
+}
+
+.parlay-fab {
+  font-family: var(--body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--chalk);
+  background: var(--pitch);
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(14, 40, 32, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.parlay-fab:hover { background: var(--pitch-deep); }
+
+.parlay-fab-count {
+  font-family: var(--mono);
+  background: rgba(246, 244, 238, 0.2);
+  border-radius: 999px;
+  padding: 0.05rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+.parlay-fab.has-legs .parlay-fab-count {
+  background: var(--league-accent);
+  color: var(--league-accent-text);
+  font-weight: 700;
+}
+
+.parlay-legs {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.parlay-leg {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.7rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.65rem 0.8rem;
+}
+
+.parlay-leg-main { min-width: 0; }
+
+.parlay-leg-pick {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.parlay-leg-sub {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: rgba(20, 35, 29, 0.55);
+  margin-top: 0.15rem;
+}
+
+.parlay-remove {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: rgba(20, 35, 29, 0.4);
+  cursor: pointer;
+  padding: 0.1rem 0.3rem;
+  flex-shrink: 0;
+  border-radius: 5px;
+}
+
+.parlay-remove:hover { background: rgba(20, 35, 29, 0.08); color: var(--down); }
+
+.parlay-empty {
+  text-align: center;
+  padding: 1.6rem 0;
+  color: rgba(20, 35, 29, 0.5);
+  font-size: 0.85rem;
+  list-style: none;
+}
+
+.parlay-summary {
+  background: var(--pitch);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.parlay-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: var(--chalk);
+}
+
+.parlay-summary-row + .parlay-summary-row { margin-top: 0.4rem; }
+
+.parlay-summary-label {
+  font-size: 0.82rem;
+  color: rgba(246, 244, 238, 0.75);
+}
+
+.parlay-summary-value {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--league-accent);
+}
+
+.parlay-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.4rem;
+}
+
+@media (max-width: 560px) {
+  .parlay-fab-wrap { right: 0.8rem; bottom: 0.8rem; }
 }

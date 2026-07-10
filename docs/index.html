@@ -173,22 +173,57 @@
         <ol class="hof-list" id="hof-unbeaten-streak"></ol>
       </section>
 
-      <section class="hof-section">
+      <section class="hof-section hof-span">
         <h3 class="hof-heading">Most-played rivalries</h3>
         <ol class="hof-list hof-list-rivalry" id="hof-most-played"></ol>
       </section>
 
-      <section class="hof-section">
+      <section class="hof-section hof-span">
         <h3 class="hof-heading">Most lopsided series</h3>
         <p class="hof-subnote">Minimum 3 meetings</p>
         <ol class="hof-list hof-list-rivalry" id="hof-lopsided"></ol>
       </section>
 
-      <section class="hof-section">
+      <section class="hof-section hof-span">
         <h3 class="hof-heading">Biggest blowouts</h3>
         <ol class="hof-list hof-list-rivalry" id="hof-blowouts"></ol>
       </section>
     </div>
+  </div>
+</div>
+
+<div class="parlay-fab-wrap">
+  <button type="button" class="parlay-fab" id="parlay-fab">
+    Parlay <span class="parlay-fab-count" id="parlay-count">0</span>
+  </button>
+</div>
+
+<div class="modal-overlay" id="parlay-overlay" hidden>
+  <div class="modal modal-wide" role="dialog" aria-modal="true" aria-labelledby="parlay-title">
+    <button type="button" class="modal-close" id="parlay-close" aria-label="Close">&times;</button>
+    <div class="modal-header">
+      <div class="modal-team-name" id="parlay-title">Parlay slip</div>
+      <div class="modal-team-sub">Built from picks added in Compare Clubs</div>
+    </div>
+
+    <ul class="parlay-legs" id="parlay-legs"></ul>
+
+    <div class="parlay-summary" id="parlay-summary" hidden>
+      <div class="parlay-summary-row">
+        <span class="parlay-summary-label">Combined probability</span>
+        <span class="parlay-summary-value" id="parlay-combined-pct"></span>
+      </div>
+      <div class="parlay-summary-row">
+        <span class="parlay-summary-label">Combined odds</span>
+        <span class="parlay-summary-value" id="parlay-combined-american"></span>
+      </div>
+    </div>
+
+    <div class="parlay-actions">
+      <button type="button" class="compare-btn" id="parlay-clear">Clear all</button>
+    </div>
+
+    <p class="compare-disclaimer">Combined probability multiplies each leg's individual probability together, which assumes the legs are independent of each other -- real results can be correlated (same day, same weather, etc.), and none of this accounts for injuries, lineups, or anything since each team's last result. Model output for fun, not a real betting line.</p>
   </div>
 </div>
 
