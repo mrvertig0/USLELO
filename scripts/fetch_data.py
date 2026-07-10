@@ -9,11 +9,15 @@ per match, which avoids the ambiguity you get scraping rendered text
 (team names like "Loudoun United FC 2" collide with score digits when
 you regex flattened text -- structured JSON avoids that entirely).
 
-Strategy per league: these leagues have no unified matchday numbering
-(each division runs its own schedule), so Sofascore's round-based
-endpoint doesn't return the full season -- round 1 comes back as a
-single oddly-sized bucket and every other round number 404s. Instead:
-  1. Do one round-1 pull just to discover every team_id in the league.
+Strategy per league: match-by-match round numbering is unreliable across
+these leagues -- some (USL2, W League) split into many divisions with no
+unified matchday numbering at all, so round 1 becomes an oddly-sized
+catch-all bucket and every other round 404s; others (League One) DO have
+real weekly rounds, but round 1 specifically may not exist by the time
+you're fetching mid-season. So instead of scanning rounds:
+  1. Pull the current standings table just to discover every team_id in
+     the league (works regardless of round numbering; falls back to a
+     round-1 bulk pull only if standings are unavailable).
   2. Fetch each team's COMPLETE match history (a separate, properly
      paginated endpoint), filtered down to that league's games.
   3. Dedupe by game_id (every match appears in two teams' histories).
@@ -34,7 +38,7 @@ import time
 from pathlib import Path
 
 import pandas as pd
-from datafc import match_data, seasons_data, team_match_history_data
+from datafc import match_data, seasons_data, standings_data, team_match_history_data
 from datafc.exceptions import DataNotAvailableError, APIError
 
 from leagues import LEAGUES
@@ -85,8 +89,20 @@ def get_current_season_id(tournament_id: int, data_source: str) -> tuple[int, st
 
 
 def discover_team_ids(tournament_id: int, season_id: int, data_source: str) -> set[int]:
-    """One bulk pull, just to get every team_id in the league -- not used
-    as the actual match source, since it's known to be incomplete."""
+    """Get every team_id currently in the league via the standings table
+    -- works regardless of how (or whether) a league numbers its match
+    rounds, unlike scanning round=1 (which some leagues, like League One,
+    simply don't have data under, even though later rounds do exist)."""
+    try:
+        df = standings_data(tournament_id, season_id, data_source=data_source)
+        ids = set(df["team_id"].dropna().astype(int))
+        if ids:
+            log.info("discovered %d teams from standings table", len(ids))
+            return ids
+        log.warning("standings table returned no teams, falling back to round-1 bulk pull")
+    except Exception as e:
+        log.warning("standings lookup failed (%s), falling back to round-1 bulk pull", e)
+
     df = match_data(tournament_id, season_id, week_number=1, data_source=data_source)
     ids = set(df["home_team_id"].dropna().astype(int)) | set(df["away_team_id"].dropna().astype(int))
     log.info("discovered %d teams from round-1 bulk pull", len(ids))
