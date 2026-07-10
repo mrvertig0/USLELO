@@ -1,0 +1,298 @@
+{
+  "most_played": [
+    {
+      "team_a_id": 465515,
+      "team_a": "Lexington SC",
+      "team_b_id": 938069,
+      "team_b": "Dallas Trinity",
+      "meetings": 9,
+      "wins_a": 2,
+      "wins_b": 5,
+      "draws": 2
+    },
+    {
+      "team_a_id": 1041471,
+      "team_a": "Fort Lauderdale United",
+      "team_b_id": 1112821,
+      "team_b": "Tampa Bay Sun FC",
+      "meetings": 9,
+      "wins_a": 0,
+      "wins_b": 4,
+      "draws": 5
+    },
+    {
+      "team_a_id": 507682,
+      "team_a": "Carolina Ascent",
+      "team_b_id": 938777,
+      "team_b": "DC Power FC",
+      "meetings": 8,
+      "wins_a": 6,
+      "wins_b": 0,
+      "draws": 2
+    },
+    {
+      "team_a_id": 938069,
+      "team_a": "Dallas Trinity",
+      "team_b_id": 1112821,
+      "team_b": "Tampa Bay Sun FC",
+      "meetings": 8,
+      "wins_a": 2,
+      "wins_b": 3,
+      "draws": 3
+    },
+    {
+      "team_a_id": 507682,
+      "team_a": "Carolina Ascent",
+      "team_b_id": 1041471,
+      "team_b": "Fort Lauderdale United",
+      "meetings": 8,
+      "wins_a": 3,
+      "wins_b": 3,
+      "draws": 2
+    },
+    {
+      "team_a_id": 938069,
+      "team_a": "Dallas Trinity",
+      "team_b_id": 938777,
+      "team_b": "DC Power FC",
+      "meetings": 8,
+      "wins_a": 2,
+      "wins_b": 2,
+      "draws": 4
+    },
+    {
+      "team_a_id": 938068,
+      "team_a": "Spokane Zephyr FC",
+      "team_b_id": 938778,
+      "team_b": "Brooklyn FC",
+      "meetings": 8,
+      "wins_a": 3,
+      "wins_b": 2,
+      "draws": 3
+    },
+    {
+      "team_a_id": 938778,
+      "team_a": "Brooklyn FC",
+      "team_b_id": 1112821,
+      "team_b": "Tampa Bay Sun FC",
+      "meetings": 8,
+      "wins_a": 5,
+      "wins_b": 0,
+      "draws": 3
+    },
+    {
+      "team_a_id": 465515,
+      "team_a": "Lexington SC",
+      "team_b_id": 1041471,
+      "team_b": "Fort Lauderdale United",
+      "meetings": 8,
+      "wins_a": 4,
+      "wins_b": 3,
+      "draws": 1
+    },
+    {
+      "team_a_id": 938068,
+      "team_a": "Spokane Zephyr FC",
+      "team_b_id": 938777,
+      "team_b": "DC Power FC",
+      "meetings": 8,
+      "wins_a": 4,
+      "wins_b": 1,
+      "draws": 3
+    }
+  ],
+  "most_lopsided": [
+    {
+      "team_a_id": 507682,
+      "team_a": "Carolina Ascent",
+      "team_b_id": 938777,
+      "team_b": "DC Power FC",
+      "meetings": 8,
+      "wins_a": 6,
+      "wins_b": 0,
+      "draws": 2,
+      "margin": 6
+    },
+    {
+      "team_a_id": 938778,
+      "team_a": "Brooklyn FC",
+      "team_b_id": 1112821,
+      "team_b": "Tampa Bay Sun FC",
+      "meetings": 8,
+      "wins_a": 5,
+      "wins_b": 0,
+      "draws": 3,
+      "margin": 5
+    },
+    {
+      "team_a_id": 507682,
+      "team_a": "Carolina Ascent",
+      "team_b_id": 938778,
+      "team_b": "Brooklyn FC",
+      "meetings": 7,
+      "wins_a": 5,
+      "wins_b": 0,
+      "draws": 2,
+      "margin": 5
+    },
+    {
+      "team_a_id": 1041471,
+      "team_a": "Fort Lauderdale United",
+      "team_b_id": 1112821,
+      "team_b": "Tampa Bay Sun FC",
+      "meetings": 9,
+      "wins_a": 0,
+      "wins_b": 4,
+      "draws": 5,
+      "margin": 4
+    },
+    {
+      "team_a_id": 465515,
+      "team_a": "Lexington SC",
+      "team_b_id": 938069,
+      "team_b": "Dallas Trinity",
+      "meetings": 9,
+      "wins_a": 2,
+      "wins_b": 5,
+      "draws": 2,
+      "margin": 3
+    },
+    {
+      "team_a_id": 938068,
+      "team_a": "Spokane Zephyr FC",
+      "team_b_id": 938777,
+      "team_b": "DC Power FC",
+      "meetings": 8,
+      "wins_a": 4,
+      "wins_b": 1,
+      "draws": 3,
+      "margin": 3
+    },
+    {
+      "team_a_id": 938777,
+      "team_a": "DC Power FC",
+      "team_b_id": 1112821,
+      "team_b": "Tampa Bay Sun FC",
+      "meetings": 7,
+      "wins_a": 1,
+      "wins_b": 4,
+      "draws": 2,
+      "margin": 3
+    },
+    {
+      "team_a_id": 1077193,
+      "team_a": "Sporting Jacksonville",
+      "team_b_id": 1112821,
+      "team_b": "Tampa Bay Sun FC",
+      "meetings": 4,
+      "wins_a": 3,
+      "wins_b": 0,
+      "draws": 1,
+      "margin": 3
+    },
+    {
+      "team_a_id": 1041471,
+      "team_a": "Fort Lauderdale United",
+      "team_b_id": 1077193,
+      "team_b": "Sporting Jacksonville",
+      "meetings": 4,
+      "wins_a": 0,
+      "wins_b": 3,
+      "draws": 1,
+      "margin": 3
+    },
+    {
+      "team_a_id": 465515,
+      "team_a": "Lexington SC",
+      "team_b_id": 938778,
+      "team_b": "Brooklyn FC",
+      "meetings": 8,
+      "wins_a": 4,
+      "wins_b": 2,
+      "draws": 2,
+      "margin": 2
+    }
+  ],
+  "biggest_blowouts": [
+    {
+      "t": 1741554000,
+      "home": "Dallas Trinity",
+      "away": "Brooklyn FC",
+      "hs": 6,
+      "as": 0,
+      "diff": 6
+    },
+    {
+      "t": 1744498800,
+      "home": "Carolina Ascent",
+      "away": "Brooklyn FC",
+      "hs": 5,
+      "as": 0,
+      "diff": 5
+    },
+    {
+      "t": 1758924000,
+      "home": "Lexington SC",
+      "away": "Dallas Trinity",
+      "hs": 6,
+      "as": 1,
+      "diff": 5
+    },
+    {
+      "t": 1726272000,
+      "home": "Dallas Trinity",
+      "away": "Lexington SC",
+      "hs": 6,
+      "as": 2,
+      "diff": 4
+    },
+    {
+      "t": 1742760000,
+      "home": "Lexington SC",
+      "away": "Carolina Ascent",
+      "hs": 0,
+      "as": 4,
+      "diff": 4
+    },
+    {
+      "t": 1760653800,
+      "home": "Lexington SC",
+      "away": "Fort Lauderdale United",
+      "hs": 5,
+      "as": 1,
+      "diff": 4
+    },
+    {
+      "t": 1770512400,
+      "home": "Fort Lauderdale United",
+      "away": "Dallas Trinity",
+      "hs": 0,
+      "as": 4,
+      "diff": 4
+    },
+    {
+      "t": 1774213200,
+      "home": "Dallas Trinity",
+      "away": "Sporting Jacksonville",
+      "hs": 0,
+      "as": 4,
+      "diff": 4
+    },
+    {
+      "t": 1776546000,
+      "home": "Lexington SC",
+      "away": "Tampa Bay Sun FC",
+      "hs": 4,
+      "as": 0,
+      "diff": 4
+    },
+    {
+      "t": 1776898800,
+      "home": "DC Power FC",
+      "away": "Fort Lauderdale United",
+      "hs": 4,
+      "as": 0,
+      "diff": 4
+    }
+  ]
+}

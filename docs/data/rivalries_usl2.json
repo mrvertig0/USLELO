@@ -1,0 +1,298 @@
+{
+  "most_played": [
+    {
+      "team_a_id": 100015,
+      "team_a": "Reading United AC",
+      "team_b_id": 253414,
+      "team_b": "FC Lehigh Valley United",
+      "meetings": 17,
+      "wins_a": 11,
+      "wins_b": 2,
+      "draws": 4
+    },
+    {
+      "team_a_id": 284085,
+      "team_a": "Lionsbridge FC",
+      "team_b_id": 316282,
+      "team_b": "Virginia Beach United",
+      "meetings": 17,
+      "wins_a": 10,
+      "wins_b": 2,
+      "draws": 5
+    },
+    {
+      "team_a_id": 253200,
+      "team_a": "North Carolina FC U23",
+      "team_b_id": 316192,
+      "team_b": "Wake FC",
+      "meetings": 16,
+      "wins_a": 8,
+      "wins_b": 5,
+      "draws": 3
+    },
+    {
+      "team_a_id": 253791,
+      "team_a": "Houston FC",
+      "team_b_id": 284112,
+      "team_b": "AHFC Royals",
+      "meetings": 15,
+      "wins_a": 3,
+      "wins_b": 7,
+      "draws": 5
+    },
+    {
+      "team_a_id": 253404,
+      "team_a": "Seacoast United Phantoms",
+      "team_b_id": 284122,
+      "team_b": "Black Rock FC",
+      "meetings": 15,
+      "wins_a": 7,
+      "wins_b": 5,
+      "draws": 3
+    },
+    {
+      "team_a_id": 253200,
+      "team_a": "North Carolina FC U23",
+      "team_b_id": 253201,
+      "team_b": "Tobacco Road FC",
+      "meetings": 15,
+      "wins_a": 7,
+      "wins_b": 5,
+      "draws": 3
+    },
+    {
+      "team_a_id": 36099,
+      "team_a": "Ocean City Nor'easters",
+      "team_b_id": 253414,
+      "team_b": "FC Lehigh Valley United",
+      "meetings": 15,
+      "wins_a": 12,
+      "wins_b": 2,
+      "draws": 1
+    },
+    {
+      "team_a_id": 253201,
+      "team_a": "Tobacco Road FC",
+      "team_b_id": 316192,
+      "team_b": "Wake FC",
+      "meetings": 15,
+      "wins_a": 8,
+      "wins_b": 6,
+      "draws": 1
+    },
+    {
+      "team_a_id": 253201,
+      "team_a": "Tobacco Road FC",
+      "team_b_id": 316193,
+      "team_b": "Salem City FC",
+      "meetings": 15,
+      "wins_a": 1,
+      "wins_b": 13,
+      "draws": 1
+    },
+    {
+      "team_a_id": 36099,
+      "team_a": "Ocean City Nor'easters",
+      "team_b_id": 100015,
+      "team_b": "Reading United AC",
+      "meetings": 15,
+      "wins_a": 7,
+      "wins_b": 3,
+      "draws": 5
+    }
+  ],
+  "most_lopsided": [
+    {
+      "team_a_id": 36101,
+      "team_a": "Western Mass Pioneers",
+      "team_b_id": 253660,
+      "team_b": "AC Connecticut",
+      "meetings": 14,
+      "wins_a": 13,
+      "wins_b": 0,
+      "draws": 1,
+      "margin": 13
+    },
+    {
+      "team_a_id": 253201,
+      "team_a": "Tobacco Road FC",
+      "team_b_id": 316193,
+      "team_b": "Salem City FC",
+      "meetings": 15,
+      "wins_a": 1,
+      "wins_b": 13,
+      "draws": 1,
+      "margin": 12
+    },
+    {
+      "team_a_id": 36099,
+      "team_a": "Ocean City Nor'easters",
+      "team_b_id": 419436,
+      "team_b": "Philadelphia Lone Star",
+      "meetings": 13,
+      "wins_a": 12,
+      "wins_b": 0,
+      "draws": 1,
+      "margin": 12
+    },
+    {
+      "team_a_id": 36099,
+      "team_a": "Ocean City Nor'easters",
+      "team_b_id": 380872,
+      "team_b": "Real Central New Jersey",
+      "meetings": 15,
+      "wins_a": 11,
+      "wins_b": 0,
+      "draws": 4,
+      "margin": 11
+    },
+    {
+      "team_a_id": 253791,
+      "team_a": "Houston FC",
+      "team_b_id": 284113,
+      "team_b": "Corpus Christi FC",
+      "meetings": 14,
+      "wins_a": 1,
+      "wins_b": 12,
+      "draws": 1,
+      "margin": 11
+    },
+    {
+      "team_a_id": 316192,
+      "team_a": "Wake FC",
+      "team_b_id": 316193,
+      "team_b": "Salem City FC",
+      "meetings": 13,
+      "wins_a": 0,
+      "wins_b": 11,
+      "draws": 2,
+      "margin": 11
+    },
+    {
+      "team_a_id": 71058,
+      "team_a": "Dayton Dutch Lions FC",
+      "team_b_id": 341749,
+      "team_b": "Fort Wayne FC",
+      "meetings": 13,
+      "wins_a": 0,
+      "wins_b": 11,
+      "draws": 2,
+      "margin": 11
+    },
+    {
+      "team_a_id": 36099,
+      "team_a": "Ocean City Nor'easters",
+      "team_b_id": 253414,
+      "team_b": "FC Lehigh Valley United",
+      "meetings": 15,
+      "wins_a": 12,
+      "wins_b": 2,
+      "draws": 1,
+      "margin": 10
+    },
+    {
+      "team_a_id": 284085,
+      "team_a": "Lionsbridge FC",
+      "team_b_id": 407757,
+      "team_b": "Patuxent Football Athletics",
+      "meetings": 11,
+      "wins_a": 10,
+      "wins_b": 0,
+      "draws": 1,
+      "margin": 10
+    },
+    {
+      "team_a_id": 253412,
+      "team_a": "Long Island Rough Riders",
+      "team_b_id": 253413,
+      "team_b": "Westchester Flames",
+      "meetings": 10,
+      "wins_a": 10,
+      "wins_b": 0,
+      "draws": 0,
+      "margin": 10
+    }
+  ],
+  "biggest_blowouts": [
+    {
+      "t": 1748653200,
+      "home": "FC Tucson",
+      "away": "Coachella FC",
+      "hs": 19,
+      "as": 0,
+      "diff": 19
+    },
+    {
+      "t": 1749952800,
+      "home": "Coachella FC",
+      "away": "FC Tucson",
+      "hs": 0,
+      "as": 16,
+      "diff": 16
+    },
+    {
+      "t": 1751752800,
+      "home": "Miami AC",
+      "away": "Sarasota Paradise",
+      "hs": 0,
+      "as": 16,
+      "diff": 16
+    },
+    {
+      "t": 1750903200,
+      "home": "Amsg FC",
+      "away": "Coachella FC",
+      "hs": 15,
+      "as": 0,
+      "diff": 15
+    },
+    {
+      "t": 1749348000,
+      "home": "Coachella FC",
+      "away": "Redlands FC",
+      "hs": 0,
+      "as": 14,
+      "diff": 14
+    },
+    {
+      "t": 1683410400,
+      "home": "Louisiana Krewe FC",
+      "away": "Blue Goose SC",
+      "hs": 11,
+      "as": 0,
+      "diff": 11
+    },
+    {
+      "t": 1748206800,
+      "home": "Ventura County Fusion",
+      "away": "Coachella FC",
+      "hs": 12,
+      "as": 1,
+      "diff": 11
+    },
+    {
+      "t": 1750806000,
+      "home": "Tacoma Stars",
+      "away": "Ballard FC",
+      "hs": 0,
+      "as": 11,
+      "diff": 11
+    },
+    {
+      "t": 1657407600,
+      "home": "Commonwealth Cardinals FC",
+      "away": "Christos FC",
+      "hs": 1,
+      "as": 11,
+      "diff": 10
+    },
+    {
+      "t": 1688256000,
+      "home": "Little Rock Rangers",
+      "away": "Blue Goose SC",
+      "hs": 10,
+      "as": 0,
+      "diff": 10
+    }
+  ]
+}

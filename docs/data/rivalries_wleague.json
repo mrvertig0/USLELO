@@ -1,0 +1,298 @@
+{
+  "most_played": [
+    {
+      "team_a_id": 420036,
+      "team_a": "Midwest United FC",
+      "team_b_id": 420044,
+      "team_b": "Kalamazoo FC",
+      "meetings": 12,
+      "wins_a": 6,
+      "wins_b": 4,
+      "draws": 2
+    },
+    {
+      "team_a_id": 420025,
+      "team_a": "Northern Virginia FC",
+      "team_b_id": 420048,
+      "team_b": "Patuxent Football Athletics",
+      "meetings": 12,
+      "wins_a": 9,
+      "wins_b": 2,
+      "draws": 1
+    },
+    {
+      "team_a_id": 420022,
+      "team_a": "Eagle FC",
+      "team_b_id": 420025,
+      "team_b": "Northern Virginia FC",
+      "meetings": 12,
+      "wins_a": 10,
+      "wins_b": 1,
+      "draws": 1
+    },
+    {
+      "team_a_id": 320500,
+      "team_a": "Wake FC",
+      "team_b_id": 420041,
+      "team_b": "North Carolina Courage U23",
+      "meetings": 11,
+      "wins_a": 1,
+      "wins_b": 8,
+      "draws": 2
+    },
+    {
+      "team_a_id": 420026,
+      "team_a": "AFC Ann Arbor",
+      "team_b_id": 420044,
+      "team_b": "Kalamazoo FC",
+      "meetings": 11,
+      "wins_a": 6,
+      "wins_b": 2,
+      "draws": 3
+    },
+    {
+      "team_a_id": 288326,
+      "team_a": "Long Island Rough Riders",
+      "team_b_id": 420047,
+      "team_b": "Morris Elite SC",
+      "meetings": 11,
+      "wins_a": 4,
+      "wins_b": 4,
+      "draws": 3
+    },
+    {
+      "team_a_id": 420026,
+      "team_a": "AFC Ann Arbor",
+      "team_b_id": 420049,
+      "team_b": "Detroit City FC",
+      "meetings": 11,
+      "wins_a": 4,
+      "wins_b": 7,
+      "draws": 0
+    },
+    {
+      "team_a_id": 385847,
+      "team_a": "Chattanooga Red Wolves SC",
+      "team_b_id": 386313,
+      "team_b": "Swarm FC",
+      "meetings": 11,
+      "wins_a": 3,
+      "wins_b": 3,
+      "draws": 5
+    },
+    {
+      "team_a_id": 420026,
+      "team_a": "AFC Ann Arbor",
+      "team_b_id": 420036,
+      "team_b": "Midwest United FC",
+      "meetings": 11,
+      "wins_a": 3,
+      "wins_b": 5,
+      "draws": 3
+    },
+    {
+      "team_a_id": 420044,
+      "team_a": "Kalamazoo FC",
+      "team_b_id": 420049,
+      "team_b": "Detroit City FC",
+      "meetings": 10,
+      "wins_a": 1,
+      "wins_b": 6,
+      "draws": 3
+    }
+  ],
+  "most_lopsided": [
+    {
+      "team_a_id": 420041,
+      "team_a": "North Carolina Courage U23",
+      "team_b_id": 420160,
+      "team_b": "North Carolina Fusion",
+      "meetings": 10,
+      "wins_a": 10,
+      "wins_b": 0,
+      "draws": 0,
+      "margin": 10
+    },
+    {
+      "team_a_id": 420022,
+      "team_a": "Eagle FC",
+      "team_b_id": 420025,
+      "team_b": "Northern Virginia FC",
+      "meetings": 12,
+      "wins_a": 10,
+      "wins_b": 1,
+      "draws": 1,
+      "margin": 9
+    },
+    {
+      "team_a_id": 420037,
+      "team_a": "Minnesota Aurora FC",
+      "team_b_id": 465520,
+      "team_b": "Rochester FC",
+      "meetings": 9,
+      "wins_a": 9,
+      "wins_b": 0,
+      "draws": 0,
+      "margin": 9
+    },
+    {
+      "team_a_id": 420022,
+      "team_a": "Eagle FC",
+      "team_b_id": 420048,
+      "team_b": "Patuxent Football Athletics",
+      "meetings": 10,
+      "wins_a": 9,
+      "wins_b": 1,
+      "draws": 0,
+      "margin": 8
+    },
+    {
+      "team_a_id": 420018,
+      "team_a": "FC Miami City",
+      "team_b_id": 420046,
+      "team_b": "Miami AC",
+      "meetings": 9,
+      "wins_a": 8,
+      "wins_b": 0,
+      "draws": 1,
+      "margin": 8
+    },
+    {
+      "team_a_id": 288326,
+      "team_a": "Long Island Rough Riders",
+      "team_b_id": 420020,
+      "team_b": "Manhattan SC",
+      "meetings": 8,
+      "wins_a": 8,
+      "wins_b": 0,
+      "draws": 0,
+      "margin": 8
+    },
+    {
+      "team_a_id": 383863,
+      "team_a": "Chicago Dutch Lions",
+      "team_b_id": 420037,
+      "team_b": "Minnesota Aurora FC",
+      "meetings": 8,
+      "wins_a": 0,
+      "wins_b": 8,
+      "draws": 0,
+      "margin": 8
+    },
+    {
+      "team_a_id": 507688,
+      "team_a": "Colorado Storm",
+      "team_b_id": 507690,
+      "team_b": "Albion SC Colorado",
+      "meetings": 8,
+      "wins_a": 8,
+      "wins_b": 0,
+      "draws": 0,
+      "margin": 8
+    },
+    {
+      "team_a_id": 420025,
+      "team_a": "Northern Virginia FC",
+      "team_b_id": 420048,
+      "team_b": "Patuxent Football Athletics",
+      "meetings": 12,
+      "wins_a": 9,
+      "wins_b": 2,
+      "draws": 1,
+      "margin": 7
+    },
+    {
+      "team_a_id": 320500,
+      "team_a": "Wake FC",
+      "team_b_id": 420041,
+      "team_b": "North Carolina Courage U23",
+      "meetings": 11,
+      "wins_a": 1,
+      "wins_b": 8,
+      "draws": 2,
+      "margin": 7
+    }
+  ],
+  "biggest_blowouts": [
+    {
+      "t": 1657152000,
+      "home": "Long Island Rough Riders",
+      "away": "FA Euro New York",
+      "hs": 18,
+      "as": 0,
+      "diff": 18
+    },
+    {
+      "t": 1750377600,
+      "home": "Utah United",
+      "away": "Colorado International SA",
+      "hs": 18,
+      "as": 0,
+      "diff": 18
+    },
+    {
+      "t": 1688166000,
+      "home": "Indy Eleven",
+      "away": "St Charles FC",
+      "hs": 16,
+      "as": 0,
+      "diff": 16
+    },
+    {
+      "t": 1748109600,
+      "home": "Dayton Dutch Lions",
+      "away": "Kings Hammer FC",
+      "hs": 0,
+      "as": 15,
+      "diff": 15
+    },
+    {
+      "t": 1782673200,
+      "home": "Long Island Rough Riders",
+      "away": "Paisley Athletic FC",
+      "hs": 15,
+      "as": 0,
+      "diff": 15
+    },
+    {
+      "t": 1716060600,
+      "home": "Morris Elite SC",
+      "away": "AC Connecticut",
+      "hs": 14,
+      "as": 0,
+      "diff": 14
+    },
+    {
+      "t": 1716750000,
+      "home": "Northern Colorado Rain",
+      "away": "Colorado International SA",
+      "hs": 14,
+      "as": 0,
+      "diff": 14
+    },
+    {
+      "t": 1717281000,
+      "home": "Colorado International SA",
+      "away": "Colorado Storm",
+      "hs": 0,
+      "as": 14,
+      "diff": 14
+    },
+    {
+      "t": 1717628400,
+      "home": "Miami AC",
+      "away": "Tallahassee Reckoning",
+      "hs": 14,
+      "as": 0,
+      "diff": 14
+    },
+    {
+      "t": 1717873200,
+      "home": "AC Connecticut",
+      "away": "Morris Elite SC",
+      "hs": 0,
+      "as": 14,
+      "diff": 14
+    }
+  ]
+}

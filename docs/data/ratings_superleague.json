@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-07-10T10:58:39.723587+00:00",
-  "data_fetched_at_utc": "2026-07-10T10:58:38.705476+00:00",
+  "generated_at_utc": "2026-07-10T14:57:51.283069+00:00",
+  "data_fetched_at_utc": "2026-07-10T14:57:49.553210+00:00",
   "matches_used": 242,
   "k_factor": 26.0,
   "home_advantage": 60.0,
@@ -17,6 +17,10 @@
       "losses": 13,
       "delta_recent": 63.9,
       "delta_recent_games": 5,
+      "peak_rating": 1646.7,
+      "peak_rating_t": 1779656400,
+      "longest_win_streak": 7,
+      "longest_unbeaten_streak": 12,
       "rank": 1
     },
     {
@@ -29,6 +33,10 @@
       "losses": 8,
       "delta_recent": -33.9,
       "delta_recent_games": 5,
+      "peak_rating": 1646.1,
+      "peak_rating_t": 1775937600,
+      "longest_win_streak": 4,
+      "longest_unbeaten_streak": 7,
       "rank": 2
     },
     {
@@ -41,6 +49,10 @@
       "losses": 21,
       "delta_recent": 47.4,
       "delta_recent_games": 5,
+      "peak_rating": 1591.4,
+      "peak_rating_t": 1779577200,
+      "longest_win_streak": 3,
+      "longest_unbeaten_streak": 17,
       "rank": 3
     },
     {
@@ -53,6 +65,10 @@
       "losses": 17,
       "delta_recent": 47.7,
       "delta_recent_games": 5,
+      "peak_rating": 1560.6,
+      "peak_rating_t": 1760310000,
+      "longest_win_streak": 3,
+      "longest_unbeaten_streak": 6,
       "rank": 4
     },
     {
@@ -65,6 +81,10 @@
       "losses": 21,
       "delta_recent": 25.7,
       "delta_recent_games": 5,
+      "peak_rating": 1573.2,
+      "peak_rating_t": 1743962400,
+      "longest_win_streak": 3,
+      "longest_unbeaten_streak": 7,
       "rank": 5
     },
     {
@@ -77,6 +97,10 @@
       "losses": 25,
       "delta_recent": 21.4,
       "delta_recent_games": 5,
+      "peak_rating": 1500.0,
+      "peak_rating_t": null,
+      "longest_win_streak": 2,
+      "longest_unbeaten_streak": 6,
       "rank": 6
     },
     {
@@ -89,6 +113,10 @@
       "losses": 23,
       "delta_recent": -8.7,
       "delta_recent_games": 5,
+      "peak_rating": 1588.6,
+      "peak_rating_t": 1734208200,
+      "longest_win_streak": 6,
+      "longest_unbeaten_streak": 8,
       "rank": 7
     },
     {
@@ -101,6 +129,10 @@
       "losses": 20,
       "delta_recent": -39.8,
       "delta_recent_games": 5,
+      "peak_rating": 1600.9,
+      "peak_rating_t": 1749943800,
+      "longest_win_streak": 3,
+      "longest_unbeaten_streak": 7,
       "rank": 8
     },
     {
@@ -113,6 +145,10 @@
       "losses": 24,
       "delta_recent": -63.2,
       "delta_recent_games": 5,
+      "peak_rating": 1569.7,
+      "peak_rating_t": 1742076000,
+      "longest_win_streak": 3,
+      "longest_unbeaten_streak": 9,
       "rank": 9
     }
   ],

@@ -1,0 +1,298 @@
+{
+  "most_played": [
+    {
+      "team_a_id": 154018,
+      "team_a": "Phoenix Rising FC",
+      "team_b_id": 217781,
+      "team_b": "Orange County SC",
+      "meetings": 28,
+      "wins_a": 11,
+      "wins_b": 7,
+      "draws": 10
+    },
+    {
+      "team_a_id": 22004,
+      "team_a": "Charleston Battery",
+      "team_b_id": 41617,
+      "team_b": "FC Tampa Bay Rowdies",
+      "meetings": 28,
+      "wins_a": 14,
+      "wins_b": 9,
+      "draws": 5
+    },
+    {
+      "team_a_id": 217134,
+      "team_a": "San Antonio FC",
+      "team_b_id": 221859,
+      "team_b": "Rio Grande Valley FC",
+      "meetings": 26,
+      "wins_a": 11,
+      "wins_b": 6,
+      "draws": 9
+    },
+    {
+      "team_a_id": 197065,
+      "team_a": "Colorado Springs Switchbacks FC",
+      "team_b_id": 217134,
+      "team_b": "San Antonio FC",
+      "meetings": 25,
+      "wins_a": 4,
+      "wins_b": 15,
+      "draws": 6
+    },
+    {
+      "team_a_id": 153498,
+      "team_a": "Sacramento Republic FC",
+      "team_b_id": 217781,
+      "team_b": "Orange County SC",
+      "meetings": 24,
+      "wins_a": 10,
+      "wins_b": 9,
+      "draws": 5
+    },
+    {
+      "team_a_id": 153498,
+      "team_a": "Sacramento Republic FC",
+      "team_b_id": 154018,
+      "team_b": "Phoenix Rising FC",
+      "meetings": 23,
+      "wins_a": 6,
+      "wins_b": 8,
+      "draws": 9
+    },
+    {
+      "team_a_id": 153490,
+      "team_a": "Ventura County FC",
+      "team_b_id": 217781,
+      "team_b": "Orange County SC",
+      "meetings": 22,
+      "wins_a": 8,
+      "wins_b": 10,
+      "draws": 4
+    },
+    {
+      "team_a_id": 22004,
+      "team_a": "Charleston Battery",
+      "team_b_id": 23635,
+      "team_b": "Pittsburgh Riverhounds",
+      "meetings": 22,
+      "wins_a": 8,
+      "wins_b": 6,
+      "draws": 8
+    },
+    {
+      "team_a_id": 148992,
+      "team_a": "Indy Eleven",
+      "team_b_id": 197070,
+      "team_b": "Louisville City FC",
+      "meetings": 22,
+      "wins_a": 4,
+      "wins_b": 11,
+      "draws": 7
+    },
+    {
+      "team_a_id": 217781,
+      "team_a": "Orange County SC",
+      "team_b_id": 276898,
+      "team_b": "Las Vegas Lights",
+      "meetings": 22,
+      "wins_a": 12,
+      "wins_b": 5,
+      "draws": 5
+    }
+  ],
+  "most_lopsided": [
+    {
+      "team_a_id": 23635,
+      "team_a": "Pittsburgh Riverhounds",
+      "team_b_id": 310969,
+      "team_b": "Loudoun United FC",
+      "meetings": 18,
+      "wins_a": 14,
+      "wins_b": 2,
+      "draws": 2,
+      "margin": 12
+    },
+    {
+      "team_a_id": 197065,
+      "team_a": "Colorado Springs Switchbacks FC",
+      "team_b_id": 217134,
+      "team_b": "San Antonio FC",
+      "meetings": 25,
+      "wins_a": 4,
+      "wins_b": 15,
+      "draws": 6,
+      "margin": 11
+    },
+    {
+      "team_a_id": 23635,
+      "team_a": "Pittsburgh Riverhounds",
+      "team_b_id": 310968,
+      "team_b": "Hartford Athletic",
+      "meetings": 18,
+      "wins_a": 13,
+      "wins_b": 2,
+      "draws": 3,
+      "margin": 11
+    },
+    {
+      "team_a_id": 153498,
+      "team_a": "Sacramento Republic FC",
+      "team_b_id": 197062,
+      "team_b": "Tacoma Defiance",
+      "meetings": 19,
+      "wins_a": 12,
+      "wins_b": 2,
+      "draws": 5,
+      "margin": 10
+    },
+    {
+      "team_a_id": 41617,
+      "team_a": "FC Tampa Bay Rowdies",
+      "team_b_id": 218106,
+      "team_b": "Miami FC",
+      "meetings": 17,
+      "wins_a": 13,
+      "wins_b": 3,
+      "draws": 1,
+      "margin": 10
+    },
+    {
+      "team_a_id": 153490,
+      "team_a": "Ventura County FC",
+      "team_b_id": 154018,
+      "team_b": "Phoenix Rising FC",
+      "meetings": 19,
+      "wins_a": 5,
+      "wins_b": 14,
+      "draws": 0,
+      "margin": 9
+    },
+    {
+      "team_a_id": 197065,
+      "team_a": "Colorado Springs Switchbacks FC",
+      "team_b_id": 310531,
+      "team_b": "New Mexico United",
+      "meetings": 19,
+      "wins_a": 4,
+      "wins_b": 13,
+      "draws": 2,
+      "margin": 9
+    },
+    {
+      "team_a_id": 22004,
+      "team_a": "Charleston Battery",
+      "team_b_id": 310969,
+      "team_b": "Loudoun United FC",
+      "meetings": 15,
+      "wins_a": 10,
+      "wins_b": 1,
+      "draws": 4,
+      "margin": 9
+    },
+    {
+      "team_a_id": 154018,
+      "team_a": "Phoenix Rising FC",
+      "team_b_id": 197062,
+      "team_b": "Tacoma Defiance",
+      "meetings": 12,
+      "wins_a": 10,
+      "wins_b": 1,
+      "draws": 1,
+      "margin": 9
+    },
+    {
+      "team_a_id": 41617,
+      "team_a": "FC Tampa Bay Rowdies",
+      "team_b_id": 277127,
+      "team_b": "Atlanta United 2",
+      "meetings": 12,
+      "wins_a": 9,
+      "wins_b": 0,
+      "draws": 3,
+      "margin": 9
+    }
+  ],
+  "biggest_blowouts": [
+    {
+      "t": 1665271800,
+      "home": "FC Tampa Bay Rowdies",
+      "away": "Loudoun United FC",
+      "hs": 8,
+      "as": 0,
+      "diff": 8
+    },
+    {
+      "t": 1572130800,
+      "home": "Pittsburgh Riverhounds",
+      "away": "Birmingham Legion FC",
+      "hs": 7,
+      "as": 0,
+      "diff": 7
+    },
+    {
+      "t": 1622934000,
+      "home": "Hartford Athletic",
+      "away": "New York Red Bulls II",
+      "hs": 7,
+      "as": 0,
+      "diff": 7
+    },
+    {
+      "t": 1653181200,
+      "home": "New Mexico United",
+      "away": "Phoenix Rising FC",
+      "hs": 7,
+      "as": 0,
+      "diff": 7
+    },
+    {
+      "t": 1684020600,
+      "home": "Charleston Battery",
+      "away": "San Antonio FC",
+      "hs": 0,
+      "as": 7,
+      "diff": 7
+    },
+    {
+      "t": 1729987200,
+      "home": "Rhode Island FC",
+      "away": "Miami FC",
+      "hs": 8,
+      "as": 1,
+      "diff": 7
+    },
+    {
+      "t": 1465691400,
+      "home": "Saint Louis FC",
+      "away": "FC Tulsa",
+      "hs": 7,
+      "as": 1,
+      "diff": 6
+    },
+    {
+      "t": 1535238000,
+      "home": "Richmond Kickers",
+      "away": "Louisville City FC",
+      "hs": 0,
+      "as": 6,
+      "diff": 6
+    },
+    {
+      "t": 1561258800,
+      "home": "Sacramento Republic FC",
+      "away": "FC Tulsa",
+      "hs": 6,
+      "as": 0,
+      "diff": 6
+    },
+    {
+      "t": 1563589800,
+      "home": "Phoenix Rising FC",
+      "away": "Austin Bold FC",
+      "hs": 6,
+      "as": 0,
+      "diff": 6
+    }
+  ]
+}
