@@ -1,0 +1,11 @@
+{
+  "league": "champ",
+  "label": "USL Championship",
+  "tournament_id": 13363,
+  "season_id": 87611,
+  "season_name": "USL Championship 2026",
+  "data_source": "sofascore",
+  "team_count": 25,
+  "fetched_at_utc": "2026-07-10T10:48:01.901280+00:00",
+  "match_count": 3927
+}

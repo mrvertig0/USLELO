@@ -418,6 +418,7 @@ USA,"USL, League Two",2021,1,9490467,Dayton Dutch Lions FC,71058,Oakland County 
 USA,"USL, League Two",2021,1,9490503,South Bend Lions,380877,Dayton Dutch Lions FC,71058,1,,4,4,4,1,,1,1,1,1625698800,Ended
 USA,"USL, League Two",2021,1,9490427,Dayton Dutch Lions FC,71058,Grand Rapids,313636,1,0,1,1,1,2,4,6,6,6,1625958000,Ended
 USA,"USL League Two, Valley Division",2022,1,10124502,Dayton Dutch Lions FC,71058,South Bend Lions,380877,0,0,0,0,0,1,4,5,5,5,1652562000,Ended
+USA,"USL League Two, Valley Division",2022,1,10124573,Toledo Villa FC,313642,Dayton Dutch Lions FC,71058,1,1,2,2,2,1,0,1,1,1,1653242400,Ended
 USA,"USL League Two, Valley Division",2022,1,10124617,Dayton Dutch Lions FC,71058,Cleveland Force SC,407744,1,2,3,3,3,2,1,3,3,3,1653771600,Ended
 USA,"USL League Two, Valley Division",2022,1,10112924,Dayton Dutch Lions FC,71058,Fort Wayne FC,341749,0,,0,0,0,2,,5,5,5,1654383600,Ended
 USA,"USL League Two, Valley Division",2022,1,10112881,South Bend Lions,380877,Dayton Dutch Lions FC,71058,1,,2,2,2,0,,0,0,0,1654729200,Ended
@@ -477,7 +478,7 @@ USA,"USL, League Two",2026,,16334867,Toledo Villa FC,313642,Dayton Dutch Lions F
 USA,"USL, League Two",2026,,16334840,West Virginia United,253410,Dayton Dutch Lions FC,71058,1,1,2,2,2,0,1,1,1,1,1782594000,Ended
 USA,"USL, League Two",2026,1,15587619,Kings Hammer Columbus,1077311,Dayton Dutch Lions FC,71058,,,,,,,,,,,1783292400,Postponed
 USA,"USL, League Two",2026,,16222755,Kings Hammer Columbus,1077311,Dayton Dutch Lions FC,71058,1,1,2,2,2,1,0,1,1,1,1783378800,Ended
-USA,"USL, League Two",2026,,16340287,Dayton Dutch Lions FC,71058,West Virginia United,253410,1,,,1,1,0,,,0,0,1783634400,Halftime
+USA,"USL, League Two",2026,,16340287,Dayton Dutch Lions FC,71058,West Virginia United,253410,1,0,1,1,1,0,0,0,0,0,1783634400,Ended
 USA,"USL, League Two",2019,1,8210371,Des Moines Menace,100011,Green Bay Voyageurs,316195,1,1,2,2,2,0,0,0,0,0,1557621000,Ended
 USA,"USL, League Two",2019,1,8211431,Des Moines Menace,100011,FC Manitoba,253786,0,5,5,5,5,0,0,0,0,0,1558744200,Ended
 USA,"USL, League Two",2019,1,8211475,Des Moines Menace,100011,FC Manitoba,253786,1,0,1,1,1,0,0,0,0,0,1559262600,Ended
@@ -498,9 +499,9 @@ USA,"USL, League Two",2021,1,9490747,St. Louis Scott Gallagher,380879,Des Moines
 USA,"USL, League Two",2021,1,9490885,Green Bay Voyageurs,316195,Des Moines Menace,100011,0,,1,1,1,0,,2,2,2,1622246400,Ended
 USA,"USL, League Two",2021,1,9490872,Kaw Valley,284121,Des Moines Menace,100011,0,0,0,0,0,1,0,1,1,1,1622937600,Ended
 USA,"USL, League Two",2021,1,9490684,Des Moines Menace,100011,Kaw Valley,284121,1,,2,2,2,0,,0,0,0,1623542400,Ended
-USA,"USL, League Two",2021,1,9490767,Des Moines Menace,100011,Fc Wichita,253836,5,,6,6,6,0,,0,0,0,1623888000,Ended
-USA,"USL, League Two",2021,1,9490760,Des Moines Menace,100011,Fc Wichita,253836,1,,1,1,1,0,,0,0,0,1624060800,Ended
-USA,"USL, League Two",2021,1,9490702,Fc Wichita,253836,Des Moines Menace,100011,0,,1,1,1,1,,3,3,3,1624579200,Ended
+USA,"USL, League Two",2021,1,9490767,Des Moines Menace,100011,FC Wichita,253836,5,,6,6,6,0,,0,0,0,1623888000,Ended
+USA,"USL, League Two",2021,1,9490760,Des Moines Menace,100011,FC Wichita,253836,1,,1,1,1,0,,0,0,0,1624060800,Ended
+USA,"USL, League Two",2021,1,9490702,FC Wichita,253836,Des Moines Menace,100011,0,,1,1,1,1,,3,3,3,1624579200,Ended
 USA,"USL, League Two",2021,1,9490733,Chicago FC United,253783,Des Moines Menace,100011,1,,2,2,2,0,,0,0,0,1625094000,Ended
 USA,"USL, League Two",2021,1,9490813,Des Moines Menace,100011,Chicago FC United,253783,1,,4,4,4,0,,0,0,0,1625702400,Ended
 USA,"USL, League Two",2021,1,9490849,Des Moines Menace,100011,St. Louis Scott Gallagher,380879,1,,5,5,5,1,,1,1,1,1625961600,Ended
@@ -525,8 +526,8 @@ USA,"USL League Two, Playoffs",2022,,10502350,Des Moines Menace,100011,Kaw Valle
 USA,"USL League Two, Playoffs",2022,,10548421,Des Moines Menace,100011,Kings Hammer,380875,2,2,4,4,4,0,1,1,1,1,1658707200,Ended
 USA,"USL League Two, Playoffs",2022,,10548402,Des Moines Menace,100011,Flint City Bucks,316283,1,0,1,1,1,0,1,1,1,1,1659140100,Ended
 USA,"USL, League Two",2023,1,11105687,St Charles FC,465617,Des Moines Menace,100011,0,0,0,0,0,2,2,4,4,4,1683504000,Ended
-USA,"USL, League Two",2023,1,11105737,Des Moines Menace,100011,Fc Wichita,253836,2,1,3,3,3,0,0,0,0,0,1684022400,Ended
-USA,"USL, League Two",2023,1,11105890,Fc Wichita,253836,Des Moines Menace,100011,0,1,1,1,1,0,3,3,3,3,1684627200,Ended
+USA,"USL, League Two",2023,1,11105737,Des Moines Menace,100011,FC Wichita,253836,2,1,3,3,3,0,0,0,0,0,1684022400,Ended
+USA,"USL, League Two",2023,1,11105890,FC Wichita,253836,Des Moines Menace,100011,0,1,1,1,1,0,3,3,3,3,1684627200,Ended
 USA,"USL, League Two",2023,1,11105854,Chicago Dutch Lions FC,407745,Des Moines Menace,100011,0,0,0,0,0,1,4,5,5,5,1685145600,Ended
 USA,"USL, League Two",2023,1,11106239,Chicago City SC,407747,Des Moines Menace,100011,1,2,3,3,3,1,0,1,1,1,1685318400,Ended
 USA,"USL, League Two",2023,1,11105747,Des Moines Menace,100011,Springfield ASC,407752,0,3,3,3,3,0,0,0,0,0,1686441600,Ended
@@ -641,14 +642,14 @@ USA,"USL League Two, Playoffs",,,8336139,South Georgia Tormenta 2,314334,Reading
 USA,"USL League Two, Playoffs",2019,1,8336324,Reading United AC,100015,Flint City Bucks,316283,0,0,0,0,0,0,0,0,1,1,1564875000,AET
 USA,"USL, League Two",2021,1,9490412,FC Lehigh Valley United,253414,Reading United AC,100015,4,,5,5,5,0,,1,1,1,1621119600,Ended
 USA,"USL, League Two",2021,1,9490784,West Chester United,313654,Reading United AC,100015,2,,2,2,2,0,,0,0,0,1621467000,Ended
-USA,"USL, League Two",2021,1,9490816,Reading United AC,100015,Northern Virginia United,313655,,,,,,,,,,,1621638000,Canceled
 USA,"USL, League Two",2021,1,9553029,Reading United AC,100015,Northern Virginia FC,383424,1,,1,1,1,0,,2,2,2,1621638000,Ended
+USA,"USL, League Two",2021,1,9490816,Reading United AC,100015,Northern Virginia United,313655,,,,,,,,,,,1621638000,Canceled
 USA,"USL, League Two",2021,1,9490874,Reading United AC,100015,Philadelphia Lone Star,419436,0,,1,1,1,0,,0,0,0,1622242800,Ended
 USA,"USL, League Two",2021,1,9490762,Philadelphia Lone Star,419436,Reading United AC,100015,1,,4,4,4,1,,2,2,2,1622934000,Ended
 USA,"USL, League Two",2021,1,9490619,Reading United AC,100015,West Chester United,313654,0,,0,0,0,0,,2,2,2,1623538800,Ended
 USA,"USL, League Two",2021,1,9490644,Real Central New Jersey,380872,Reading United AC,100015,1,,2,2,2,1,,2,2,2,1623884400,Ended
-USA,"USL, League Two",2021,1,9490522,Northern Virginia United,313655,Reading United AC,100015,0,1,1,1,1,0,2,2,2,2,1624143600,Ended
 USA,"USL, League Two",2021,1,9553928,Northern Virginia FC,383424,Reading United AC,100015,0,,1,1,1,0,,2,2,2,1624143600,Ended
+USA,"USL, League Two",2021,1,9490522,Northern Virginia United,313655,Reading United AC,100015,0,1,1,1,1,0,2,2,2,2,1624143600,Ended
 USA,"USL, League Two",2021,1,9490535,West Chester United,313654,Reading United AC,100015,1,0,1,1,1,0,0,0,0,0,1624489200,Ended
 USA,"USL, League Two",2021,1,9490550,Reading United AC,100015,Real Central New Jersey,380872,0,,0,0,0,0,,0,0,0,1624748400,Ended
 USA,"USL, League Two",2021,1,9490470,Reading United AC,100015,Philadelphia Lone Star,419436,1,,4,4,4,1,,1,1,1,1625266800,Ended
@@ -754,8 +755,8 @@ USA,"USL, League Two",2021,1,9490693,Brave SC,222130,Florida Elite SA,316287,1,1
 USA,"USL, League Two",2021,1,9490804,Brave SC,222130,Weston FC,253665,,,,,,,,,,,1622934000,Canceled
 USA,"USL, League Two",2021,1,9490620,Florida Elite SA,316287,Brave SC,222130,0,0,0,0,0,0,1,1,1,1,1623538800,Ended
 USA,"USL, League Two",2021,1,9572762,Brave SC,222130,Weston FC,253665,3,,4,4,4,0,,0,0,0,1623882600,Ended
-USA,"USL, League Two",2021,1,9600832,Tampa Bay United SC,384040,Brave SC,222130,1,,3,3,3,0,,1,1,1,1624145400,Ended
 USA,"USL, League Two",2021,1,9490520,Tampa Bay Rowdies U23,253664,Brave SC,222130,1,,3,3,3,0,,1,1,1,1624145400,Ended
+USA,"USL, League Two",2021,1,9600832,Tampa Bay United SC,384040,Brave SC,222130,1,,3,3,3,0,,1,1,1,1624145400,Ended
 USA,"USL, League Two",2021,1,9490531,FC Miami City Champions,253231,Brave SC,222130,0,,0,0,0,1,,2,2,2,1624482000,Ended
 USA,"USL, League Two",2021,1,9490546,Brave SC,222130,FC Florida U23,380883,2,,2,2,2,1,,1,1,1,1624748400,Ended
 USA,"USL, League Two",2021,1,9600839,Brave SC,222130,Tampa Bay United SC,384040,2,1,3,3,3,0,0,0,0,0,1625958000,Ended
@@ -1155,10 +1156,10 @@ USA,"USL, League Two",2019,1,8211800,FC Miami City Champions,253231,Treasure Coa
 USA,"USL, League Two",2019,1,8211819,FC Miami City Champions,253231,Sarasota Metropolis FC,316085,1,1,2,2,2,1,3,4,4,4,1563055200,Ended
 USA,"USL, League Two",2021,1,9490411,Weston FC,253665,FC Miami City Champions,253231,,,,,,,,,,,1620255600,Canceled
 USA,"USL, League Two",2021,1,9507705,Weston FC,253665,FC Miami City Champions,253231,4,,4,4,4,0,,2,2,2,1620514800,Ended
-USA,"USL, League Two",2021,1,9622814,FC Miami City Champions,253231,Tampa Bay United SC,384040,0,,1,1,1,0,,1,1,1,1621204200,Ended
 USA,"USL, League Two",2021,1,9490403,FC Miami City Champions,253231,Tampa Bay Rowdies U23,253664,,,,,,,,,,,1621204200,Canceled
-USA,"USL, League Two",2021,1,9490737,Tampa Bay Rowdies U23,253664,FC Miami City Champions,253231,,,,,,,,,,,1622669400,Canceled
+USA,"USL, League Two",2021,1,9622814,FC Miami City Champions,253231,Tampa Bay United SC,384040,0,,1,1,1,0,,1,1,1,1621204200,Ended
 USA,"USL, League Two",2021,1,9600838,Tampa Bay United SC,384040,FC Miami City Champions,253231,0,,2,2,2,0,,2,2,2,1622669400,Ended
+USA,"USL, League Two",2021,1,9490737,Tampa Bay Rowdies U23,253664,FC Miami City Champions,253231,,,,,,,,,,,1622669400,Canceled
 USA,"USL, League Two",2021,1,9490621,FC Miami City Champions,253231,FC Florida U23,380883,0,,0,0,0,0,,2,2,2,1623531600,Ended
 USA,"USL, League Two",2021,1,9490524,Florida Elite SA,316287,FC Miami City Champions,253231,1,,2,2,2,0,,1,1,1,1624136400,Ended
 USA,"USL, League Two",2021,1,9490558,FC Miami City Champions,253231,Florida Elite SA,316287,3,,5,5,5,2,,4,4,4,1625086800,Ended
@@ -1266,8 +1267,8 @@ USA,"USL, League Two",2024,1,12092529,FC Boston Bolts,253403,AC Connecticut,2536
 USA,"USL, League Two",2024,1,12092481,FC Boston Bolts,253403,Seacoast United Phantoms,253404,0,0,0,0,0,1,0,1,1,1,1717023600,Ended
 USA,"USL, League Two",2024,1,12092461,Pathfinder FC,380873,FC Boston Bolts,253403,0,0,0,0,0,0,0,0,0,0,1717268400,Ended
 USA,"USL, League Two",2024,1,12092419,FC Boston Bolts,253403,Blackwatch Rush,407743,1,1,2,2,2,0,1,1,1,1,1717630200,Ended
-USA,"USL, League Two",2024,1,12092405,Black Rock FC,284122,FC Boston Bolts,253403,,,,,,,,,,,1717889400,Postponed
 USA,"USL, League Two",2024,1,12092267,FC Boston Bolts,253403,Black Rock FC,284122,2,2,4,4,4,0,0,0,0,0,1717889400,Ended
+USA,"USL, League Two",2024,1,12092405,Black Rock FC,284122,FC Boston Bolts,253403,,,,,,,,,,,1717889400,Postponed
 USA,"USL, League Two",2024,1,12092354,FC Boston Bolts,253403,Pathfinder FC,380873,2,2,4,4,4,1,0,1,1,1,1718478000,Ended
 USA,"USL, League Two",2024,1,12092335,Seacoast United Phantoms,253404,FC Boston Bolts,253403,1,0,1,1,1,0,0,0,0,0,1718748000,Ended
 USA,"USL, League Two",2024,1,12092294,Blackwatch Rush,407743,FC Boston Bolts,253403,0,0,0,0,0,0,1,1,1,1,1719086400,Ended
@@ -1400,6 +1401,7 @@ USA,"USL, League Two",2021,1,9490502,Salem City FC,316193,West Virginia United,2
 USA,"USL League Two, South Atlantic Division",2022,1,10124506,Wake FC,316192,West Virginia United,253410,0,,1,1,1,4,,6,6,6,1652569200,Ended
 USA,"USL League Two, South Atlantic Division",2022,1,10124625,West Virginia United,253410,Salem City FC,316193,0,,0,0,0,0,,1,1,1,1653778800,Ended
 USA,"USL League Two, South Atlantic Division",2022,1,10112847,Charlotte Independence II,380880,West Virginia United,253410,2,,5,5,5,0,,0,0,0,1654729200,Ended
+USA,"USL League Two, South Atlantic Division",2022,1,10112803,West Virginia United,253410,Wake FC,316192,4,0,4,4,4,0,1,1,1,1,1654988400,Ended
 USA,"USL League Two, South Atlantic Division",2022,1,10113179,Salem City FC,316193,West Virginia United,253410,2,,2,2,2,1,,2,2,2,1656543600,Ended
 USA,"USL League Two, South Atlantic Division",2022,1,10112824,West Virginia United,253410,Charlotte Independence II,380880,1,,3,3,3,1,,2,2,2,1656802800,Ended
 USA,"USL League Two, South Atlantic Division",2022,1,10113192,West Virginia United,253410,Salem City FC,316193,1,1,2,2,2,1,0,1,1,1,1658012400,Ended
@@ -1623,8 +1625,8 @@ USA,"USL, League Two",2021,1,9490674,Northern Virginia United,313655,FC Lehigh V
 USA,"USL, League Two",2021,1,9490709,FC Lehigh Valley United,253414,Philadelphia Lone Star,419436,0,1,1,1,1,0,2,2,2,2,1622674800,Ended
 USA,"USL, League Two",2021,1,9490706,FC Lehigh Valley United,253414,West Chester United,313654,0,,0,0,0,4,,5,5,5,1622934000,Ended
 USA,"USL, League Two",2021,1,9490814,FC Lehigh Valley United,253414,Real Central New Jersey,380872,1,,3,3,3,1,,1,1,1,1623106800,Ended
-USA,"USL, League Two",2021,1,9553925,FC Lehigh Valley United,253414,Northern Virginia FC,383424,0,,1,1,1,1,,1,1,1,1623279600,Ended
 USA,"USL, League Two",2021,1,9490588,FC Lehigh Valley United,253414,Northern Virginia United,313655,0,1,1,1,1,1,0,1,1,1,1623279600,Ended
+USA,"USL, League Two",2021,1,9553925,FC Lehigh Valley United,253414,Northern Virginia FC,383424,0,,1,1,1,1,,1,1,1,1623279600,Ended
 USA,"USL, League Two",2021,1,9490526,Real Central New Jersey,380872,FC Lehigh Valley United,253414,2,,2,2,2,1,,1,1,1,1624143600,Ended
 USA,"USL, League Two",2021,1,9553933,Northern Virginia FC,383424,FC Lehigh Valley United,253414,1,,4,4,4,1,,2,2,2,1625266800,Ended
 USA,"USL, League Two",2021,1,9490479,FC Lehigh Valley United,253414,Real Central New Jersey,380872,0,,2,2,2,0,,1,1,1,1625698800,Ended
@@ -1788,8 +1790,8 @@ USA,"USL, League Two",2019,1,8211627,Weston FC,253665,Daytona SC,316191,,,0,0,0,
 USA,"USL, League Two",2019,1,8211651,Florida Elite SA,316287,Weston FC,253665,3,0,3,3,3,0,1,1,1,1,1561244400,Ended
 USA,"USL, League Two",2019,1,8211709,Daytona SC,316191,Weston FC,253665,0,0,0,0,0,1,0,1,1,1,1561851000,Ended
 USA,"USL, League Two",2021,1,9490777,Weston FC,253665,Florida Elite SA,316287,0,,0,0,0,1,,1,1,1,1621467000,Ended
-USA,"USL, League Two",2021,1,9490696,Tampa Bay Rowdies U23,253664,Weston FC,253665,,,,,,,,,,,1622325600,Canceled
 USA,"USL, League Two",2021,1,9600835,Tampa Bay United SC,384040,Weston FC,253665,1,,3,3,3,0,,0,0,0,1622325600,Ended
+USA,"USL, League Two",2021,1,9490696,Tampa Bay Rowdies U23,253664,Weston FC,253665,,,,,,,,,,,1622325600,Canceled
 USA,"USL, League Two",2021,1,9490719,Weston FC,253665,FC Florida U23,380883,1,,1,1,1,0,,1,1,1,1622676600,Ended
 USA,"USL, League Two",2021,1,9490595,Florida Elite SA,316287,Weston FC,253665,2,,2,2,2,0,,0,0,0,1623279600,Ended
 USA,"USL, League Two",2021,1,9490656,Weston FC,253665,Tampa Bay Rowdies U23,253664,0,,2,2,2,2,,2,2,2,1623614400,Ended
@@ -1997,8 +1999,8 @@ USA,"USL, League Two",2023,1,11106262,Twin City Toucans,253789,Houston FC,253791
 USA,"USL, League Two",2023,1,11106344,Twin City Toucans,253789,Round Rock SC,373732,3,4,7,7,7,0,0,0,0,0,1689467400,Ended
 USA,"USL, League Two",2024,1,12091951,Twin City Toucans,253789,Hill Country Lobos,507367,2,1,3,3,3,0,2,2,2,2,1716510600,Ended
 USA,"USL, League Two",2024,1,12091946,AC Houston SUR,407754,Twin City Toucans,253789,0,0,0,0,0,0,2,2,2,2,1716768000,Ended
-USA,"USL, League Two",2024,1,12091889,Twin City Toucans,253789,Corpus Christi FC,284113,0,0,0,0,0,0,3,3,3,3,1717029000,Ended
 USA,"USL, League Two",2024,1,12091932,Corpus Christi FC,284113,Twin City Toucans,253789,,,,,,,,,,,1717029000,Postponed
+USA,"USL, League Two",2024,1,12091889,Twin City Toucans,253789,Corpus Christi FC,284113,0,0,0,0,0,0,3,3,3,3,1717029000,Ended
 USA,"USL, League Two",2024,1,12360357,Corpus Christi FC,284113,Twin City Toucans,253789,1,3,4,4,4,1,0,1,1,1,1717286400,Ended
 USA,"USL, League Two",2024,1,12091929,Twin City Toucans,253789,AHFC Royals,284112,0,0,0,0,0,0,1,1,1,1,1717547400,Ended
 USA,"USL, League Two",2024,1,12091917,Twin City Toucans,253789,AC Houston SUR,407754,2,1,3,3,3,1,0,1,1,1,1717806600,Ended
@@ -2783,11 +2785,11 @@ USA,"USL, League Two",2023,1,11105993,FC Buffalo,313627,Cleveland Force SC,40774
 USA,"USL, League Two",2023,1,11106218,Toledo Villa FC,313642,FC Buffalo,313627,0,2,2,2,2,0,2,2,2,2,1689116400,Ended
 USA,"USL, League Two",2024,1,12092550,FC Buffalo,313627,Toledo Villa FC,313642,3,1,4,4,4,0,1,1,1,1,1716159600,Ended
 USA,"USL, League Two",2024,1,12092473,Toledo Villa FC,313642,FC Buffalo,313627,0,1,1,1,1,0,0,0,0,0,1717023600,Ended
-USA,"USL, League Two",2024,1,12092449,FC Buffalo,313627,Cleveland Force SC,407744,,,,,,,,,,,1717279200,Postponed
 USA,"USL, League Two",2024,1,12383581,Cleveland Force SC,407744,FC Buffalo,313627,2,3,5,5,5,2,1,3,3,3,1717279200,Ended
+USA,"USL, League Two",2024,1,12092449,FC Buffalo,313627,Cleveland Force SC,407744,,,,,,,,,,,1717279200,Postponed
 USA,"USL, League Two",2024,1,12092395,Fort Wayne FC,341749,FC Buffalo,313627,2,0,2,2,2,1,1,2,2,2,1717885800,Ended
-USA,"USL, League Two",2024,1,12092386,Cleveland Force SC,407744,FC Buffalo,313627,,,,,,,,,,,1718146800,Postponed
 USA,"USL, League Two",2024,1,12092226,FC Buffalo,313627,Cleveland Force SC,407744,4,1,5,5,5,0,3,3,3,3,1718146800,Ended
+USA,"USL, League Two",2024,1,12092386,Cleveland Force SC,407744,FC Buffalo,313627,,,,,,,,,,,1718146800,Postponed
 USA,"USL, League Two",2024,1,12092366,Kings Hammer,380875,FC Buffalo,313627,2,0,2,2,2,1,2,3,3,3,1718406000,Ended
 USA,"USL, League Two",2024,1,12092311,FC Buffalo,313627,Fort Wayne FC,341749,0,1,1,1,1,0,1,1,1,1,1718838000,Ended
 USA,"USL, League Two",2024,1,12092245,FC Buffalo,313627,Kings Hammer,380875,0,5,5,5,5,0,2,2,2,2,1719689400,Ended
@@ -2892,7 +2894,6 @@ USA,"USL, League Two",2021,1,9490540,Toledo Villa FC,313642,Kings Hammer,380875,
 USA,"USL, League Two",2021,1,9490449,Grand Rapids,313636,Toledo Villa FC,313642,1,,6,6,6,0,,0,0,0,1625094000,Ended
 USA,"USL, League Two",2021,1,9490475,Toledo Villa FC,313642,Grand Rapids,313636,1,,2,2,2,2,,5,5,5,1625263200,Ended
 USA,"USL, League Two",2021,1,9490476,Toledo Villa FC,313642,Flint City Bucks,316283,0,,1,1,1,4,,5,5,5,1625697000,Ended
-USA,"USL League Two, Valley Division",2022,1,10124573,Toledo Villa FC,313642,Dayton Dutch Lions FC,71058,1,1,2,2,2,1,0,1,1,1,1653242400,Ended
 USA,"USL League Two, Valley Division",2022,1,10124586,Toledo Villa FC,313642,South Bend Lions,380877,0,,0,0,0,2,,5,5,5,1653519600,Ended
 USA,"USL League Two, Valley Division",2022,1,10124614,Toledo Villa FC,313642,Fort Wayne FC,341749,0,,1,1,1,2,,3,3,3,1653760800,Ended
 USA,"USL League Two, Valley Division",2022,1,10112946,Toledo Villa FC,313642,Kings Hammer,380875,1,0,1,1,1,0,2,2,2,2,1654365600,Ended
@@ -3030,7 +3031,6 @@ USA,"USL, League Two",2021,1,9490507,Salem City FC,316193,Wake FC,316192,4,,4,4,
 USA,"USL, League Two",2021,1,9490436,Tri-Cities Otters FC,253780,Wake FC,316192,2,,2,2,2,0,,0,0,0,1625958000,Ended
 USA,"USL League Two, South Atlantic Division",2022,1,10124556,Wake FC,316192,Charlotte Independence II,380880,0,0,0,0,0,2,4,6,6,6,1653174000,Ended
 USA,"USL League Two, South Atlantic Division",2022,1,10112871,Salem City FC,316193,Wake FC,316192,3,2,5,5,5,0,0,0,0,0,1654644600,Ended
-USA,"USL League Two, South Atlantic Division",2022,1,10112803,West Virginia United,253410,Wake FC,316192,4,0,4,4,4,0,1,1,1,1,1654988400,Ended
 USA,"USL League Two, South Atlantic Division",2022,1,10112778,Charlotte Independence II,380880,Wake FC,316192,3,,6,6,6,0,,2,2,2,1656266400,Ended
 USA,"USL, League Two",2022,1,10113209,Wake FC,316192,Salem City FC,316193,0,,0,0,0,2,,8,8,8,1657413300,Ended
 USA,"USL, League Two",2023,1,11105780,Salem City FC,316193,Wake FC,316192,1,1,2,2,2,1,0,1,1,1,1684364400,Ended
@@ -3459,9 +3459,9 @@ USA,"USL League Two, Deep North Division",2022,1,10112864,Peoria City,380878,FC 
 USA,"USL League Two, Deep North Division",2022,1,10112842,Peoria City,380878,Thunder Bay Chill,253787,1,2,3,3,3,0,0,0,0,0,1656892800,Ended
 USA,"USL League Two, Playoffs",2022,,10502734,Chicago FC United,253783,Peoria City,380878,1,2,3,3,3,0,1,1,1,1,1658520000,Ended
 USA,"USL, League Two",2023,1,11105911,Peoria City,380878,St Charles FC,465617,2,0,2,2,2,1,2,3,3,3,1684629000,Ended
-USA,"USL, League Two",2023,1,11105863,Peoria City,380878,Fc Wichita,253836,2,1,3,3,3,0,0,0,0,0,1685147400,Ended
+USA,"USL, League Two",2023,1,11105863,Peoria City,380878,FC Wichita,253836,2,1,3,3,3,0,0,0,0,0,1685147400,Ended
 USA,"USL, League Two",2023,1,11105972,Peoria City,380878,Chicago City SC,407747,0,0,0,0,0,1,1,2,2,2,1685838600,Ended
-USA,"USL, League Two",2023,1,11106346,Fc Wichita,253836,Peoria City,380878,0,0,0,0,0,1,1,2,2,2,1686182400,Ended
+USA,"USL, League Two",2023,1,11106346,FC Wichita,253836,Peoria City,380878,0,0,0,0,0,1,1,2,2,2,1686182400,Ended
 USA,"USL, League Two",2023,1,11105738,Chicago Dutch Lions FC,407745,Peoria City,380878,2,0,2,2,2,0,1,1,1,1,1686441600,Ended
 USA,"USL, League Two",2023,1,11105847,St Charles FC,465617,Peoria City,380878,0,1,1,1,1,1,2,3,3,3,1686789000,Ended
 USA,"USL, League Two",2023,1,11105912,Chicago City SC,407747,Peoria City,380878,2,0,2,2,2,0,1,1,1,1,1687305600,Ended
@@ -3808,6 +3808,7 @@ USA,"USL, League Two",2025,1,13850004,Monterey Bay FC II,465616,Marin FC Legends
 USA,"USL, League Two",2026,1,15587907,Almaden FC,507372,Marin FC Legends,407740,0,3,3,3,3,1,0,1,1,1,1780794000,Ended
 USA,"USL, League Two",2026,,16340155,Marin FC Legends,407740,Almaden FC,507372,0,0,0,0,0,1,0,1,1,1,1782952200,Ended
 USA,"USL League Two, Northeast Division",2022,1,10112744,Pathfinder FC,380873,Blackwatch Rush,407743,,,1,1,1,,,4,4,4,1655593200,Ended
+USA,"USL League Two, Northeast Division",2022,1,10112710,Blackwatch Rush,407743,Pathfinder FC,380873,0,2,2,2,2,0,0,0,0,0,1656631800,Ended
 USA,"USL, League Two",2023,1,11106021,Blackwatch Rush,407743,Pathfinder FC,380873,1,1,2,2,2,0,0,0,0,0,1688684400,Ended
 USA,"USL, League Two",2023,1,11106308,Pathfinder FC,380873,Blackwatch Rush,407743,1,0,1,1,1,4,3,7,7,7,1689462000,Ended
 USA,"USL, League Two",2024,1,12092278,Blackwatch Rush,407743,Pathfinder FC,380873,1,2,3,3,3,0,0,0,0,0,1719356400,Ended
@@ -3816,7 +3817,7 @@ USA,"USL, League Two",2025,1,13849481,New England FC,1077315,Blackwatch Rush,407
 USA,"USL, League Two",2025,1,13849742,Blackwatch Rush,407743,New England FC,1077315,1,1,2,2,2,1,4,5,5,5,1750892400,Ended
 USA,"USL, League Two",2026,1,15587581,Blackwatch Rush,407743,New England FC,1077315,0,0,0,0,0,3,1,4,4,4,1779314400,Ended
 USA,"USL, League Two",2026,,16357301,Blackwatch Rush,407743,Connecticut Rush,1173429,0,1,1,1,1,0,2,2,2,2,1781996400,Ended
-USA,"USL, League Two",2026,,16340280,New England FC,1077315,Blackwatch Rush,407743,0,,0,0,0,0,,0,0,0,1783638000,1st half
+USA,"USL, League Two",2026,,16340280,New England FC,1077315,Blackwatch Rush,407743,0,1,1,1,1,0,0,0,0,0,1783638000,Ended
 USA,"USL League Two, Valley Division",2022,1,10124537,Kings Hammer,380875,Cleveland Force SC,407744,1,,2,2,2,1,,2,2,2,1653087600,Ended
 USA,"USL League Two, Valley Division",2022,1,10124650,Cleveland Force SC,407744,Fort Wayne FC,341749,2,,2,2,2,1,,1,1,1,1654038000,Ended
 USA,"USL League Two, Valley Division",2022,1,10112986,Cleveland Force SC,407744,South Bend Lions,380877,1,,2,2,2,1,,2,2,2,1654297200,Ended
@@ -3857,21 +3858,21 @@ USA,"USL League Two, Heartland Division",2022,1,10113132,Chicago Dutch Lions FC,
 USA,"USL League Two, Heartland Division",2022,1,10112939,St. Louis Lions,253790,Chicago Dutch Lions FC,407745,2,,7,7,7,0,,2,2,2,1654380000,Ended
 USA,"USL League Two, Heartland Division",2022,1,10113063,Chicago City SC,407747,Chicago Dutch Lions FC,407745,2,,3,3,3,1,,2,2,2,1654732800,Ended
 USA,"USL League Two, Heartland Division",2022,1,10112713,Chicago Dutch Lions FC,407745,St. Louis Lions,253790,2,,2,2,2,0,,3,3,3,1655334000,Ended
-USA,"USL League Two, Heartland Division",2022,1,10112725,Chicago Dutch Lions FC,407745,Fc Wichita,253836,0,,2,2,2,2,,3,3,3,1655596800,Ended
+USA,"USL League Two, Heartland Division",2022,1,10112725,Chicago Dutch Lions FC,407745,FC Wichita,253836,0,,2,2,2,2,,3,3,3,1655596800,Ended
 USA,"USL League Two, Heartland Division",2022,1,10112862,Chicago Dutch Lions FC,407745,Kaw Valley,284121,0,0,0,0,0,2,1,3,3,3,1655676000,Ended
 USA,"USL League Two, Heartland Division",2022,1,10113021,Chicago FC United,253783,Chicago Dutch Lions FC,407745,5,3,8,8,8,0,0,0,0,0,1655942400,Ended
 USA,"USL League Two, Heartland Division",2022,1,10112957,Chicago Dutch Lions FC,407745,Chicago FC United,253783,0,,1,1,1,2,,7,7,7,1656201600,Ended
 USA,"USL League Two, Heartland Division",2022,1,10113053,Chicago Dutch Lions FC,407745,Chicago City SC,407747,2,,3,3,3,1,,5,5,5,1656547200,Ended
 USA,"USL League Two, Heartland Division",2022,1,10486345,Chicago Dutch Lions FC,407745,Springfield ASC,407752,0,3,3,3,3,0,1,1,1,1,1657137600,Ended
-USA,"USL League Two, Heartland Division",2022,1,10113241,Fc Wichita,253836,Chicago Dutch Lions FC,407745,,3,3,3,3,,0,0,0,0,1657324800,Ended
+USA,"USL League Two, Heartland Division",2022,1,10113241,FC Wichita,253836,Chicago Dutch Lions FC,407745,,3,3,3,3,,0,0,0,0,1657324800,Ended
 USA,"USL League Two, Heartland Division",2022,1,10113101,Kaw Valley,284121,Chicago Dutch Lions FC,407745,,3,3,3,3,,0,0,0,0,1657488600,Ended
 USA,"USL League Two, Heartland Division",2022,1,10113212,Chicago Dutch Lions FC,407745,Springfield ASC,407752,,0,0,0,0,,3,3,3,3,1657749600,Ended
 USA,"USL, League Two",2023,1,11105967,Springfield ASC,407752,Chicago Dutch Lions FC,407745,0,1,1,1,1,0,0,0,0,0,1684886400,Ended
 USA,"USL, League Two",2023,1,11106316,St Charles FC,465617,Chicago Dutch Lions FC,407745,1,1,2,2,2,0,0,0,0,0,1685570400,Ended
-USA,"USL, League Two",2023,1,11106033,Fc Wichita,253836,Chicago Dutch Lions FC,407745,2,2,4,4,4,0,1,1,1,1,1685905200,Ended
+USA,"USL, League Two",2023,1,11106033,FC Wichita,253836,Chicago Dutch Lions FC,407745,2,2,4,4,4,0,1,1,1,1,1685905200,Ended
 USA,"USL, League Two",2023,1,11105842,Chicago Dutch Lions FC,407745,Chicago City SC,407747,0,0,0,0,0,0,2,2,2,2,1686787200,Ended
 USA,"USL, League Two",2023,1,11106195,Chicago Dutch Lions FC,407745,Springfield ASC,407752,1,0,1,1,1,1,1,2,2,2,1688256000,Ended
-USA,"USL, League Two",2023,1,11106076,Chicago Dutch Lions FC,407745,Fc Wichita,253836,2,2,4,4,4,1,2,3,3,3,1688842800,Ended
+USA,"USL, League Two",2023,1,11106076,Chicago Dutch Lions FC,407745,FC Wichita,253836,2,2,4,4,4,1,2,3,3,3,1688842800,Ended
 USA,"USL, League Two",2023,1,11106247,Chicago City SC,407747,Chicago Dutch Lions FC,407745,2,1,3,3,3,0,0,0,0,0,1689292800,Ended
 USA,"USL, League Two",2023,1,11106339,Chicago Dutch Lions FC,407745,St Charles FC,465617,1,2,3,3,3,0,1,1,1,1,1689465600,Ended
 USA,"USL, League Two",2024,1,12091948,Sueño FC,507364,Chicago Dutch Lions FC,407745,1,2,3,3,3,0,0,0,0,0,1716681600,Ended
@@ -3943,8 +3944,8 @@ USA,"USL, League Two",2026,1,15587867,Miami AC,407746,Brevard Fire SC,465618,2,0
 USA,"USL, League Two",2026,1,15588013,Miami AC,407746,Fort Lauderdale United FC,1077309,0,0,0,0,0,0,3,3,3,3,1781380800,Ended
 USA,"USL, League Two",2026,,16321692,Miami AC,407746,Lakeland United FC,1173423,2,0,2,2,2,5,0,5,5,5,1781733600,Ended
 USA,"USL, League Two",2026,,16340136,Miami AC,407746,Brevard Fire SC,465618,1,2,3,3,3,0,2,2,2,2,1782691200,Ended
-USA,"USL League Two, Northwest Division",2022,1,10124572,FC Olympia,407749,Portland Timbers U23,253666,,,,,,,,,,,1653184800,Canceled
 USA,"USL League Two, Northwest Division",2022,1,10333268,FC Olympia,407749,Capital FC,416925,0,2,2,2,2,0,3,3,3,3,1653184800,Ended
+USA,"USL League Two, Northwest Division",2022,1,10124572,FC Olympia,407749,Portland Timbers U23,253666,,,,,,,,,,,1653184800,Canceled
 USA,"USL League Two, Northwest Division",2022,1,10124612,PDX FC,316417,FC Olympia,407749,1,1,2,2,2,0,1,1,1,1,1653703200,Ended
 USA,"USL League Two, Northwest Division",2022,1,10124646,Ballard FC,407758,FC Olympia,407749,1,,3,3,3,0,,0,0,0,1653944400,Ended
 USA,"USL League Two, Northwest Division",2022,1,10112974,Lane United FC,253335,FC Olympia,407749,2,,2,2,2,0,,0,0,0,1654396200,Ended
@@ -4143,7 +4144,7 @@ USA,"USL, League Two",2026,1,15587539,Midwest United FC,407755,Lansing City Foot
 USA,"USL, League Two",2026,1,15587806,Union FC Macomb,507374,Midwest United FC,407755,0,0,0,0,0,2,2,4,4,4,1780520400,Ended
 USA,"USL, League Two",2026,,16321708,Lansing City Football,407759,Midwest United FC,407755,0,1,1,1,1,2,3,5,5,5,1781823600,Ended
 USA,"USL, League Two",2026,,16334842,Midwest United FC,407755,Union FC Macomb,507374,,,,,,,,,,,1782586800,Postponed
-USA,"USL, League Two",2026,,16402204,Midwest United FC,407755,Union FC Macomb,507374,,,,0,0,,,,0,0,1783638000,Not started
+USA,"USL, League Two",2026,,16402204,Midwest United FC,407755,Union FC Macomb,507374,,,,0,0,,,,0,0,1783638000,Interrupted
 USA,"USL League Two, Chesapeake Division",2022,1,10124522,Patuxent Football Athletics,407757,Commonwealth Cardinals FC,407756,0,0,0,0,0,0,0,0,0,0,1652655600,Ended
 USA,"USL League Two, Chesapeake Division",2022,1,10112786,Commonwealth Cardinals FC,407756,Patuxent Football Athletics,407757,2,,2,2,2,0,,0,0,0,1655856000,Ended
 USA,"USL, League Two",2023,1,11106059,Patuxent Football Athletics,407757,Virginia Marauders FC,465621,2,1,3,3,3,0,1,1,1,1,1687998600,Ended
@@ -4381,6 +4382,7 @@ USA,"USL, League Two",2026,,16322651,Flatirons SC,417739,Boulder County United,4
 USA,"USL, League Two",2026,,16336929,Flatirons SC,417739,Atletico Union,1173435,1,0,1,1,1,0,2,2,2,2,1782176400,Ended
 USA,"USL, League Two",2026,,16340101,Flatirons SC,417739,Utah United,507360,0,0,0,0,0,1,2,3,3,3,1782435600,Ended
 USA,"USL, League Two",2026,,16400022,Flatirons SC,417739,Colorado Storm,1090019,0,0,0,0,0,1,2,3,3,3,1783036800,Ended
+USA,"USL, League Two",2026,,16340285,Real Colorado,1173441,Flatirons SC,417739,2,0,2,2,2,1,1,2,2,2,1783645200,Ended
 USA,"USL, League Two",2021,1,9490406,West Chester United,313654,Philadelphia Lone Star,419436,0,,1,1,1,0,,0,0,0,1620237600,Ended
 USA,"USL, League Two",2021,1,9490401,Northern Virginia United,313655,Philadelphia Lone Star,419436,,,,,,,,,,,1620514800,Canceled
 USA,"USL, League Two",2021,1,9490547,Northern Virginia United,313655,Philadelphia Lone Star,419436,2,0,2,2,2,0,1,1,1,1,1624748400,Ended
